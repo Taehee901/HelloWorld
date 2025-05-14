@@ -79,7 +79,13 @@ public class JSExe {
 				str += " 입니다";
 				break;
 			}
-			str += msg+"," +"";
+			if(str == "msg")
+			{
+				str += ","+msg+"," ;				
+			}
+			else {
+				str += msg ;	
+			}
 			//if조건문 이용해서 콤마삭제
 		}
 		

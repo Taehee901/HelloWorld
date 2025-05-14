@@ -23,6 +23,5 @@ public class HelloJava {
 		System.out.println(20+30);
 		System.out.println("결과는 "+20+30);//앞문자열-뒤 문자열로인식
 		System.out.println("결과는 "+(20+30));//string+int(+) => str +(20+30)=>str + 50
-		
 	}
 }

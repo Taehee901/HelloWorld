@@ -10,12 +10,12 @@ public class JSExe {
 		int num1 = 30;
 		int num2 = 30;
 		// 기본데이터유형
-		System.out.println(num1 == num2);
+//		System.out.println(num1 == num2);
 
 		String str1 = new String("Hello");
 		String str2 = new String("Hello");
-		System.out.println(str1);
-		System.out.println(str2);
+//		System.out.println(str1);
+//		System.out.println(str2);
 
 		// "30" vs .30
 		// 데이터타입이 다르면 둘 중 하나를 같은 데이터타입으로 변경
@@ -23,18 +23,19 @@ public class JSExe {
 		int num3 = 30;
 		// ""아무값없다 문자열로 바꾼다는 의미
 		// "one" 문자열이라 안되는데 숫자를 문자열로가지고있는건 가능
-		System.out.println(str3.equals("" + num3));
+//		System.out.println(str3.equals("" + num3));
 		// integer
 		// parseInt는 문자열을 숫자타입(int)변환
 		int num4 = Integer.parseInt(str3);// 문자열을 숫자로 변환
-		System.out.println(num3 == num4);// 30vs . "30" ->30(문자열30이 숫자30으로 바꿔줌)
+//		System.out.println(num3 == num4);// 30vs . "30" ->30(문자열30이 숫자30으로 바꿔줌)
 		// 객체주소가지고있으면 참조변수
 		// 문자열을 비교할 경우에는 메소드 equals를(비교할매개값) 사용해야한다,==일 경우 false(비교연산자사용할경우)
-		System.out.println(str1.equals(str2));
+//		System.out.println(str1.equals(str2));
 //		String str1 = "Hello";
 
 //		test2();//평균을 구하기,테스트2메서드호출
-		test3();
+//		test3();//스캐너 사용.
+		test4();
 		// 변경된 부분.
 		// https://hgko1207.github.io/2020/05/18/eclipse-git-clone/
 		// 충돌연습(원격,로컬)-로컬 team - commit
@@ -63,9 +64,33 @@ public class JSExe {
 //		}
 //		System.out.println("결과: " +sum);
 
-	}// end test1
+	}// end main
 //java.lang.System =>기본패키지라 생략가능
 
+	public static void test4() {
+		//몇번반복할지모르겠지만사용자가입력한값까지
+		Scanner scn = new Scanner(System.in);
+		String  str = "친구목록은 ";
+		while(true) {
+			System.out.println("친구이름 입력,종료하려면 quit>>");
+			String msg = scn.nextLine();
+			//equals로 비교
+			if(msg.equals("quit")) {
+				str += " 입니다";
+				break;
+			}
+			str += msg + ",";
+		}
+		
+		//홍길동,김민규,최석영
+		//친구목록은 홍길동,김민규,최석영(입력한이름갯수만큼나오게하는게) 입니다.
+		System.out.println(str);
+		System.out.println("end of prog.");
+	}// end test4
+	
+	
+
+	
 	public static void test3() {
 		// 사용자의 입력값을 읽어들이기
 		// import,풀네임,ctrl+shfit+o

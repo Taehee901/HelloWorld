@@ -3,6 +3,11 @@ package com.yedam;
 public class JSExe {
 	//반드시 main메소드만있어야하는건아니다
 	public static void main(String[] args) {
+
+		//변경된 부분.
+		//https://hgko1207.github.io/2020/05/18/eclipse-git-clone/
+		//충돌연습(원격,로컬)-로컬 team - commit
+		
 		//임의의 수를 생성,1~100사이의 임의의 값 생성.
 		//1<=x<11,데이터타입변환 프로모션
 //		//int sum = 0;
@@ -39,5 +44,3 @@ public static void test() {
 	}//end of test
   }
 }//end of class
-
-

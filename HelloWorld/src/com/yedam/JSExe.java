@@ -69,6 +69,6 @@ public class JSExe {
 		System.out.println("결과: " + sum);
 	}// end of test2.
 }// end of class
-	}//end of test
-  }
-}//end of class
+//	}//end of test
+//  }
+//}//end of class

@@ -106,7 +106,7 @@ public class JSExe {
 			int score = Integer.parseInt(value);//102030-안쓸경우는 
 			sum += score;
 			
-		}
+		}//
 		double avg = sum/3.0;
 		avg = Math.round(avg * 100)/100.0;
 		System.out.println("합계 :"+sum+", 평균: " + avg);

@@ -79,7 +79,8 @@ public class JSExe {
 				str += " 입니다";
 				break;
 			}
-			str += msg + ",";
+			str += msg+"," +"";
+			//if조건문 이용해서 콤마삭제
 		}
 		
 		//홍길동,김민규,최석영

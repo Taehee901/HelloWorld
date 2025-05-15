@@ -35,7 +35,8 @@ public class JSExe {
 
 //		test2();//평균을 구하기,테스트2메서드호출
 //		test3();//스캐너 사용.
-		test4();
+//		test4();
+		test5();
 		// 변경된 부분.
 		// https://hgko1207.github.io/2020/05/18/eclipse-git-clone/
 		// 충돌연습(원격,로컬)-로컬 team - commit
@@ -67,37 +68,68 @@ public class JSExe {
 	}// end main
 //java.lang.System =>기본패키지라 생략가능
 
+//	<소 >대
+	
+	
+	public static void test5() {
+		//printf("형식문자열",값1,값2...)
+		//print옆으로 출력,println ->줄바꿈포함출력
+		//printf ex) "%s","문자",뒤에오는문자값을 받아옴,\n
+		//d-인수값받아옴,s-문자
+		System.out.printf("%s %d\n %.2f\t","문자",30,30.3);
+		System.out.println("문자");
+		
+		//첫번째매개값 "홍길동",100,23.9
+		System.out.printf("%s\n %d\n %.1f\n","홍길동",100,23.9);
+		//안녕하세요. 이름은 이창호입니다.
+//		System.out.printf("%s\n %s %d %s\n %s %.1f %s",
+//				           "안녕하세요. 이름은 이창호입니다.",
+//				           "나이는",20,"세 입니다.",
+//				           "몸무게는",67.8,"입니다.");
+		//------
+		String formatStr ="안녕하세요.%s입니다.\n";
+		formatStr += "나이는 %d세입니다.\n";
+		formatStr += "몸무게는 %.1f입니다\n";
+		System.out.printf(formatStr,"이창호",20,67.8);
+//		System.out.printf("%s\n","안녕하세요. 이름은 김태희입니다.");
+//		//나이는 20세 입니다.
+//		System.out.printf("%s %d %s\n","나이는",20,"세 입니다.");
+//		//몸무게는 67.8입니다.
+//		System.out.printf("%s %d/n","");
+	}
+	
+	
 	public static void test4() {
-		//몇번반복할지모르겠지만사용자가입력한값까지
+		// 몇번반복할지모르겠지만사용자가입력한값까지
 		Scanner scn = new Scanner(System.in);
-		String  str = "친구목록은 ";
-		while(true) {
+		String str = "친구목록은 ";
+		// 값이첫번째조건일때실행
+		boolean isfirst = true;
+		while (true) {
 			System.out.println("친구이름 입력,종료하려면 quit>>");
 			String msg = scn.nextLine();
-			//equals로 비교
-			if(msg.equals("quit")) {
+			// equals로 비교
+			if (msg.equals("quit")) {
 				str += " 입니다";
 				break;
 			}
-			if(str == "msg")
-			{
-				str += ","+msg+"," ;				
+//			System.out.println("입력한값은"+msg);
+			// if조건문 이용해서 콤마삭제
+			if (isfirst) {
+				str += msg;
+				isfirst = false;
+			} else {
+				str += ", " + msg;
 			}
-			else {
-				str += msg ;	
-			}
-			//if조건문 이용해서 콤마삭제
+			//commit 안하면 pull
 		}
-		
-		//홍길동,김민규,최석영
-		//친구목록은 홍길동,김민규,최석영(입력한이름갯수만큼나오게하는게) 입니다.
-		System.out.println(str);
-		System.out.println("end of prog.");
-	}// end test4
-	
-	
+			// 홍길동,김민규,최석영
+			// 친구목록은 홍길동,김민규,최석영(입력한이름갯수만큼나오게하는게) 입니다.
+			System.out.println(str);
+			System.out.println("end of prog.");
+		 // end test4
+	}
 
-	
 	public static void test3() {
 		// 사용자의 입력값을 읽어들이기
 		// import,풀네임,ctrl+shfit+o
@@ -110,13 +142,13 @@ public class JSExe {
 //		System.out.println("친구의 이름을 입력>>"); = console.log
 			System.out.println("학생의 점수를 입력>>");
 			String value = scn.nextLine();// 입력값을 문자열형태로 반환.(커서의시작부터엔터전까지입력한것들)
-			int score = Integer.parseInt(value);//102030-안쓸경우는 
+			int score = Integer.parseInt(value);// 102030-안쓸경우는
 			sum += score;
-			
-		}//
-		double avg = sum/3.0;
-		avg = Math.round(avg * 100)/100.0;
-		System.out.println("합계 :"+sum+", 평균: " + avg);
+
+		} //
+		double avg = sum / 3.0;
+		avg = Math.round(avg * 100) / 100.0;
+		System.out.println("합계 :" + sum + ", 평균: " + avg);
 
 //		System.out.println("입력값은 " + value);
 

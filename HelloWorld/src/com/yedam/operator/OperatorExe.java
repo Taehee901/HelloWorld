@@ -7,9 +7,38 @@ public class OperatorExe {
 //		test1();
 //		test2();
 //		test3();
-		test4();
+//		test4();
+		test5();
+		
 	}
+	
+	
+	public static void test5() {
+		String pass ="";
+		int score = (int)(Math.random()*100);//0<=x<99,()없으면 0*0 = 불
+//		if(score>=60) {
+//			if(score >=80){
+//			pass="우수"
+//		}else{
+//			pass = "합격";
+//		}
+//		else {
+//			if(score<20) {
+//				pass ="불불합격";
+//			}else {
+////			pass="불합격";				
+//			}
+//		}
+		//삼항연산자로 변경
+		System.out.println(score);
+		//if-else:if-else
+		pass = (score>=60)?(score>=80)?"우수":"합격":(score<20)?"불불합격":"불합격";
+		System.out.printf("%d점은 %s\n",score,pass);
+		System.out.println(pass);
+	}
+	
 
+//''->char타입,int +,문자열이먼저나오면3,3.0->jdk33.0
 	//"월" 정보를 입력하면 "공란" 반환하는 메소드,getSpace()
 	//객체안함수 메소드,어떤형태의 데이터타입인지 명시,호출한영역에 int데이터타입을 반환하는지 명시해줘야함,자바스크립트와다르게 데이터타입이o 
 	public static int getSpace(int month) {
@@ -46,7 +75,7 @@ public class OperatorExe {
 		return lastDate;
 	}//end of getLastDate
 	
-//
+
 	// 달력형태
 	public static void test4() {
 		int mon = 3;//월정보입력...

@@ -1,6 +1,6 @@
 package com.yedam;
 
-// ctrl+shift+f(맞춤)
+// ctrl+shift+f(줄맞춤)
 public class HelloJava {
 	public static void main(String[] args) {
 		//int(정수)long,short,double(실수,소수점),boolean(참거짓)

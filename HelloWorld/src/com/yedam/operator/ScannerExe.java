@@ -24,7 +24,7 @@ public class ScannerExe {
 //			}
 //		}// end of while
 		
-		//다시
+		//다시해봐야함
 		//은행
 		int balance = 0;//계좌의 금액.
 		int money = 0;
@@ -49,7 +49,7 @@ public class ScannerExe {
 			System.out.print("출금액을 입력>>" );
 			money = Integer.parseInt(scn.nextLine());
 			if(balance < money) {
-				System.out.println("마이너스금액은 안됩니다.");
+				System.out.println("마이너스금액은 안됩니다.대출을권해드릴까요?");
 			}else {
 				balance-= money;
 			}

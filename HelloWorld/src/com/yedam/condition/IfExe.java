@@ -32,19 +32,15 @@ public class IfExe {
 		}
 //		System.out.println("시도한 횟수"+count);
 		if(count < 5) {
-			System.out.println("임의의 값은 "+randomValue+" ,시도한 횟수: "+count+" ,아주 똑똑합니다");
+			System.out.println("임의의 값은 "+randomValue+" ,시도한 횟수: "+count+" ,운이 아주 좋으시네요");
 		}
 		else {
 //			System.out.println("좀 더 노력하세요");
-			System.out.println("임의의 값은 "+randomValue+"시도한 횟수: "+count+" ,좀 더 노력하세요");
+			System.out.println("임의의 값은 "+randomValue+" ,시도한 횟수: "+count+" ,좀 더 노력하세요");
 		}
 	}
 	
-	
-	
-	
-	
-	
+//반복횟수정해지면 for,어떤조건될때까지 반복 while
 	
 	public static void test() {
 		int score = 85;
@@ -86,4 +82,4 @@ public class IfExe {
 		}//end of switch
 	}
 }
-
+//do while문 

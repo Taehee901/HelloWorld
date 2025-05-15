@@ -180,7 +180,7 @@ public class JSExe {
 		// test();
 //}//end of main.
 
-		// math random = 0* 100<=x<1* 100
+	//	// math random = 0* 100<=x<1* 100
 		// 임의의 수를 생성. 30~100사이의 임의의값 생성.
 		// 평균:173/5=>34.6
 //		int sum = 0;

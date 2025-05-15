@@ -12,7 +12,7 @@ public class OperatorExe {
 		
 	}
 	
-	
+	//?
 	public static void test5() {
 		String pass ="";
 		int score = (int)(Math.random()*100);//0<=x<99,()없으면 0*0 = 불

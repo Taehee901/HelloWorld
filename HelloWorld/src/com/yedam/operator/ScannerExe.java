@@ -1,5 +1,5 @@
 package com.yedam.operator;//패키지안에다
-
+//
 import java.util.Scanner;
 
 public class ScannerExe {

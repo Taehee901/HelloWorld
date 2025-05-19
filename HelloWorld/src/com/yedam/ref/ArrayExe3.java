@@ -11,7 +11,7 @@ public class ArrayExe3 { //class시작부분
 	
 	//class 변수 선언
 	static Student[] stdAry;//class범위선언되어있어서 어디든지 사용가능
-	
+	//
 	public static void main(String[] args) {
 		//init 제일 먼전 선언 값을 가져옴
 		init();

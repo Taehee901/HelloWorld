@@ -1,7 +1,7 @@
 package com.yedam.condition;
 
 import java.util.Scanner;
-
+//
 public class IfExe {
 	
 	public static void main(String[] args) {

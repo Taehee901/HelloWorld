@@ -1,5 +1,5 @@
 package com.yedam;
-
+//
 // ctrl+shift+f(줄맞춤)
 public class HelloJava {
 	public static void main(String[] args) {

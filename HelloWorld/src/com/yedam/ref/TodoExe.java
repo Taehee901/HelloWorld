@@ -1,5 +1,5 @@
 package com.yedam.ref;
-
+//
 import java.util.Scanner;
 
 //혼공자 223페이지 연습문제6

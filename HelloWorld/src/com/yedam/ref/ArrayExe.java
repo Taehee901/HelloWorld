@@ -1,7 +1,7 @@
 package com.yedam.ref;
 
 import java.util.Scanner;
-
+//
 public class ArrayExe {
 	public static void main(String[] args) {
 //		strAry();

@@ -1,7 +1,7 @@
 package com.yedam;
 
 import java.util.Scanner;
-
+//
 public class JSExe {
 	// 반드시 main메소드만있어야하는건아고main순자척진행
 	public static void main(String[] args) {

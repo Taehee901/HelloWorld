@@ -11,5 +11,5 @@ public class Student {//참초타입변수Student데이터타입
 	double height;//키
 	 Gender gender;//성별,gender male/female 둘 중 하나의 값만 들고옴
 	//열거형데이터타입
-	//
+	////
 }

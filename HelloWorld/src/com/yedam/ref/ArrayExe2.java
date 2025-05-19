@@ -38,4 +38,4 @@ public class ArrayExe2 {
 		}
 		System.out.printf("ary[1]요소의 합: %d\n",sum);
 	}
-}
+}//

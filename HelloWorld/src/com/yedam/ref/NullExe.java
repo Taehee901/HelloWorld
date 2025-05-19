@@ -1,5 +1,5 @@
 package com.yedam.ref;
-
+//
 public class NullExe {
 	// 널값참조
 	public static void main(String[] args) {

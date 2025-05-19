@@ -32,7 +32,7 @@ public class ArrayExe {
 					if (friendAry[i] == null) {
 						friendAry[i] = name;
 						System.out.println("친구이름 입력완료");
-						break;
+						break;//이름배열이 n개일 경우 같은이름존재하면 n만큼돌아야하는데 앞의거 보면 되니
 					}
 //						else {
 //						System.out.println("추가하겠습니까?1.입력 2.취소");

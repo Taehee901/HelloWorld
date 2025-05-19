@@ -24,7 +24,7 @@ public class MemberExe {
 	public static void main(String[] args) {
 		boolean run = true;
 		Scanner scanner = new Scanner(System.in);
-		Member [] bas = null;
+		Member [] bas = new Member[20];
 		while(run) {
 			System.out.println("------------");
 			System.out.println("1.회원 추가 | 2.수정 | 3.삭제 | 4.조회 | 5.종료");
@@ -49,8 +49,6 @@ public class MemberExe {
 				members.name = name;
 				members.phone = phone;
 				members.pointe = point;
-				bas = new Member [point];
-				
 			}
 			else if(selectNo == 2) {
 			}

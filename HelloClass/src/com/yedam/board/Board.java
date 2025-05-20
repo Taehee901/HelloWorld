@@ -55,4 +55,14 @@ public class Board {
 		//1     날씨가 좋아요    홍길동
 		System.out.printf("%3d %12s %4s\n",boardNo,title,writer);
 	}
+	//상세보기.
+	public void showToAllInfo() {
+		//글번호:5   작성자:홍길동
+		//제목: 날씨가 좋아요
+		//내용: 오늘 30도가 넘는데도 좋아요.
+		String strFormat = "글번호:%d   작성자:%s\n";
+		strFormat += "제목: %s\n";
+		strFormat += "내용: %s";
+		System.out.printf(strFormat,boardNo,writer,title,content);
+	}
 }

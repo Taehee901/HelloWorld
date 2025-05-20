@@ -78,7 +78,8 @@ public class BoardExe {
 	 * 2     클래스 멋짐!    김민규
 	 * 3     자바어려움      박석민
 	 * 4     그래도 열심히!!  김민규
-	 * 
+	 * -------------------------
+	 * 상세보기: 글번호입력,메뉴로이동(q)
 	 *  ** 등록된 글이 없습니다 **
 	 * */
 	void boardList() {
@@ -86,8 +87,27 @@ public class BoardExe {
 		System.out.println("========================");
 		for (int i = 0;i<boards.length;i++) {
 			if(boards[i] != null) {//null이 아닐때만 출력//null에러
-				boards[i].showInfo();				
+				boards[i].showInfo();
 			}
+		}
+		//상세보기.
+		System.out.println("-------------------------");
+		System.out.println("상세보기: 글번호입력,메뉴로이동(q)");
+		System.out.println("-------------------------");//q 번호 이동,아닐경우 글번호입력
+		String str = scn.nextLine();
+		//메뉴,상세
+		if(str.equals("q")) {
+			return;//boardList 종료
+		}
+		else {//1,2,3값이 들어올경우
+			int no = Integer.parseInt(str);//no 글번호
+			//배열에서 조회.,null값이 있다는 거 주의
+			for(int i = 0;i<boards.length;i++) {
+				if(boards[i]!= null && boards[i].getBoardNo() == no) {
+					boards[i].showToAllInfo();
+				}
+			}
+			
 		}
 		System.out.println();
 	}

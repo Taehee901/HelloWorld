@@ -10,7 +10,7 @@ package com.yedam.ref.app;
 
 public class Member {
 	String id;
-	String name;
+	String name;//필드
 	String phone;
-	int pointe;
+	int point;
 }

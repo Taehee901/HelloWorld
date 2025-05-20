@@ -23,8 +23,8 @@ public class MemberExe {
 	static Member [] member; 
 	public static void main(String[] args) {
 		boolean run = true;
-		Scanner scanner = new Scanner(System.in);
 		Member [] bas = new Member[20];
+		Scanner scanner = new Scanner(System.in);
 		while(run) {
 			System.out.println("------------");
 			System.out.println("1.회원 추가 | 2.수정 | 3.삭제 | 4.조회 | 5.종료");
@@ -48,7 +48,10 @@ public class MemberExe {
 				members.id = id;
 				members.name = name;
 				members.phone = phone;
-				members.pointe = point;
+				members.point = point;
+				
+				//배열저장
+//				for(int i = 0)
 			}
 			else if(selectNo == 2) {
 			}

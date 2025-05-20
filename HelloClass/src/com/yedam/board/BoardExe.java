@@ -11,11 +11,14 @@ public class BoardExe {
 	// 필드 선언.=>메서드에 다 접근가능하게
 	private Board[] boards;//데이터 저장(boards)
 	private Scanner scn = new Scanner(System.in);//execute에 선언하면 execute내에
-	private int bno = 0;
+//	private int bno = 0;
+	private int bno = 2;//배열인덱스를 0,1위치는 아래에서 가지고 있으니 3번째부터 추가하면 들어감
 	//생성자.
 	public BoardExe() {
 		boards = new Board[100];//필드의 null값인 100개담을수있는공간을 boards 할당
 		//한건찾고 
+		boards[0] = new Board(10,"날씨가 좋습니다.","오늘 기온이 30도가 넘습니다","홍길동");
+		boards[1] = new Board(11,"자바는 힘들어요","자바는 힘들지 않아요...","김민규");
 	}
 	
 	//메소드.

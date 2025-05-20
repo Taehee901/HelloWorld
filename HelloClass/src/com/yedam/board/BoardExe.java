@@ -103,6 +103,7 @@ public class BoardExe {
 			return;//boardList 종료
 		}
 		else {//1,2,3값이 들어올경우
+			//continue;
 			int no = Integer.parseInt(str);//no 글번호
 			//배열에서 조회.,null값이 있다는 거 주의
 			for(int i = 0;i<boards.length;i++) {

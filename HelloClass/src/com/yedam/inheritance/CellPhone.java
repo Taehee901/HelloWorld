@@ -5,8 +5,7 @@ package com.yedam.inheritance;
  *  - Model,Color
  *  자식: SmartPhone
  *  	- TV보기
- *  
- *  
+
  *  
  * */
 //매개값 두개받는 생성자 생성

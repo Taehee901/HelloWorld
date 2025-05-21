@@ -8,7 +8,7 @@ public class ArrayExe {
 //		deleteAry();
 		friendApp();
 	}
-
+//public외부클래스접근바로가능 privite 내부에서접근가능static클래스가 메모리읽어들이는시점사용가능 void는 리턴되는값이없다,반환안하고실행끝
 	public static void friendApp() {
 		Scanner scn = new Scanner(System.in);
 		String[] friendAry = new String[10];

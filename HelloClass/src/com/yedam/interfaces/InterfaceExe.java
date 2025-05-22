@@ -14,6 +14,7 @@ public class InterfaceExe {
 		rc.turnOn();
 		rc.turnOff();
 		
+		//기본클래스가 ..?인스턴스 
 		
 		
 //		RemoteControl rc2 = new Radio();

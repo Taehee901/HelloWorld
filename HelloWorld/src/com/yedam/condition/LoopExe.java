@@ -30,12 +30,7 @@ public class LoopExe {
 }
 	//기본타입.참조변수,(대문자-클래스)
 	
-	
-	
-	
-	
-	
-	
+
 	
 	public static void test() {
 		boolean run = false;

@@ -26,10 +26,18 @@ public class CalendarExe {
 //		makeCalendar(2025, 05);
 		Scanner scn = new Scanner(System.in);
 		Calendar now = Calendar.getInstance();
-		month = Integer.parseInt(scn.nextLine());
-		for(int i = 1;i<month;i++) {
-
-		}
+		now.set(Calendar.YEAR, 2024);
+//		month = Integer.parseInt(scn.nextLine());
+//		
+//		for(int i = 1;i<month;i++)
+//		{
+//			System.out.printf("    %d년  %02d월 \n",year,month);
+//			return;
+//		}
+//		
+		
+		
+		
 		//공락,해당되는날짜요일day_of_week
 //		Scanner scn = new Scanner(System.in);
 //		System.out.print("년 입력>>");

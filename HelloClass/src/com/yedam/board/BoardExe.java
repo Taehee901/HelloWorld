@@ -1,7 +1,7 @@
 package com.yedam.board;
 
 import java.util.Scanner;
-
+//일반예외보다 실행예외신경
 /*
  *추가(addBoard)/수정-글번호기준 제목 내용 수정/삭제-배열초기값이 null이라삭제처럼보이게가능 /
  *목록(boardList) ->상세화면 조회
@@ -36,35 +36,98 @@ public class BoardExe {
 		boards[10] = new Board(20, "자바가[20] 힘들어요","자바는 힘들지 않아요...", "김민규");
 		
 	}
+	
+	//loginCheck()
+	//ctrl+클릭 메소드이동
+	boolean loginCheck() {//true,false반드시반환
+		for (int i = 1; i <= 3; i++) {
+		String id = userMessage("아이디를 입력하세요");
+		String pwd = userMessage("비밀번호를 입력하세요");
+		// 로그인 성공시
+		if (!UserExe.login(id, pwd)) {// 일치하지않을경우
+			System.out.println("아이디와 비밀번호를 확인하세요.");
+			if (i == 3) {
+				System.out.println("3번 실패했습니다. 종료합니다.");
+				return false;// 값반환,값이없을경우메소드 종료 =>logincheck종료 => sysout("환영~");
+//				Integer.parseInt("a");==강제종료 되서 끝은나지만정상적은아님
+			}
+			//continue아랫코드실행안하고 위로 돌아감
+			continue;
+		}//실패의 경우
+		//메소드종료하면서 메소드호출하는곳에 true값 반환
+		return true; // 로그인을 성공하면 언제라도 반복문을 빠져 나와서 아래 코드를 실행.
+	} // 3번의 기회를 제공.
+	return false;
+}//end of loginCheck();
+	
+	
+	
+	
+	
+	
+//	void loginCheck() {
+////		for(int i =1;i<=3;i++) {
+////		String uid = userMessage("아이디를 입력하세요");
+////		String upwd = userMessage("비밀번호를 입력하세요");
+////		if(!UserExe.login(uid, upwd)) {
+////			System.out.println("아이디와 비밀번호를 확인하세요.");
+////			return;
+////		}
+////	}
+////	String uid = userMessage("아이디를 입력하세요");
+////	String upwd = userMessage("비밀번호를 입력하세요");
+////	if(!UserExe.login(uid, upwd)) {
+////		System.out.println("아이디와 비밀번호를 확인하세요.");
+////		return;
+////	}
+////	System.out.println("환영합니다!!!");
+//		for (int i = 1; i <= 3; i++) {
+//			String id = userMessage("아이디를 입력하세요");
+//			String pwd = userMessage("비밀번호를 입력하세요");
+//			// 로그인 성공시
+//			if (!UserExe.login(id, pwd)) {// 일치하지않을경우
+//				System.out.println("아이디와 비밀번호를 확인하세요.");
+//				if (i == 3) {
+//					System.out.println("3번 실패했습니다. 종료합니다.");
+//					return;// 값반환,값이없을경우메소드 종료 =>logincheck종료 => sysout("환영~");
+////					Integer.parseInt("a");==강제종료 되서 끝은나지만정상적은아님
+//				}
+//				continue;
+//			}
+//			break; // 로그인을 성공하면 언제라도 반복문을 빠져 나와서 아래 코드를 실행.
+//		} // 3번의 기회를 제공.
+//	}//end of loginCheck();
+	
 //아이디와 비밀번호틀릴경우
 	//3번까지 기회주는데..셋다틀릴경우 종료,2025년 05월 21일
 	// 메소드.
 	void execute() {
-//		for(int i =1;i<=3;i++) {
-//			String uid = userMessage("아이디를 입력하세요");
-//			String upwd = userMessage("비밀번호를 입력하세요");
-//			if(!UserExe.login(uid, upwd)) {
-//				System.out.println("아이디와 비밀번호를 확인하세요.");
-//				return;
-//			}
-//		}
-		String uid = userMessage("아이디를 입력하세요");
-		String upwd = userMessage("비밀번호를 입력하세요");
-		if(!UserExe.login(uid, upwd)) {
-			System.out.println("아이디와 비밀번호를 확인하세요.");
-			return;
+//		loginCheck();
+		if(!loginCheck()) {//실패경우
+			//리턴어느메소드에호출되는지에따라 다름
+			return;//execute()메소드의 종료.
 		}
 		System.out.println("환영합니다!!!");
+			
+		
 		boolean run = true;
 		//아이디 입력.
 		//비밀번호 입력.
 		UserExe.login(null, null);
 		while (run) {
 			System.out.println("---------------------------");
-			System.out.println("1.추가 2.수정 3.삭제 4.목록 6.종료");
+			System.out.println("1.추가 2.수정 3.삭제 4.목록 5.종료");
 			System.out.println("---------------------------");
 			System.out.print("선택>> ");
-			int selectNo = Integer.parseInt(scn.nextLine());
+			//문자를 숫자 변경 예외발생.
+			int selectNo = 0;//try문 안에 선언시
+			
+			try {
+				selectNo = Integer.parseInt(scn.nextLine());//문자열숫자				
+			}catch(NumberFormatException e) {
+				System.out.println("1 ~ 5번중에 선택.");
+				continue;
+			}
 //			if(selectNo == 1)
 			switch (selectNo) {
 			case 1:// 추가
@@ -80,11 +143,14 @@ public class BoardExe {
 				boardList();
 				break;
 			case 5:// 종료
+				run = false;
+				break;
 			default:
 				System.out.println("메뉴를 다시 선택하세요.");
 			}// end of switch
 
 		} // end of while
+		System.out.println("end of prog");
 	}// end of execute
 
 	// 기능.
@@ -130,6 +196,7 @@ public class BoardExe {
 	 * 없습니다 **
 	 */
 	
+	//loginCheck
 
 	
 	//새글만들때 배열큰값+1한값을 순번으로 매기는방식
@@ -165,7 +232,15 @@ public class BoardExe {
 				page--;//+1
 			}else {// 1,2,3값이 들어올경우
 					// continue;
-				int no = Integer.parseInt(str);// no 글번호
+				//글번호외에 다른 문자가 들어오면..예외처리
+				int no = 0;
+				//정상적인 값을 입력할때까지 반복
+				try {
+					 no = Integer.parseInt(str);// no 글번호입력
+				}catch(NumberFormatException e) {
+					System.out.println("목록에 있는 글번호를 선택하세요");
+					continue;//다시 목록부터 보여주기.
+				}
 				// 배열에서 조회.,null값이 있다는 거 주의
 				// 반환된타입 Board
 				Board sboard = getBoard(no);

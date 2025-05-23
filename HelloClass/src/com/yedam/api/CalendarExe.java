@@ -24,9 +24,23 @@ public class CalendarExe {
 	public static void makeCalendar(int year, int month) {
 		//들어간값 달력이 나오도록
 //		makeCalendar(2025, 05);
+		//입력부분
 		Scanner scn = new Scanner(System.in);
+		System.out.println("년도 입력:");
+		year = Integer.parseInt(scn.nextLine());
+		System.out.println("월 입력:");
+		month = Integer.parseInt(scn.nextLine());
+		
 		Calendar now = Calendar.getInstance();
-		now.set(Calendar.YEAR, 2024);
+		now.set(Calendar.DAY_OF_WEEK, year);
+		now.set(Calendar.DATE, month);
+		
+//		int fw = now.get(Calendar.DAY_OF_WEEK, year)
+		
+		
+		
+		
+		
 //		month = Integer.parseInt(scn.nextLine());
 //		
 //		for(int i = 1;i<month;i++)
@@ -52,7 +66,7 @@ public class CalendarExe {
 			System.out.println("============================");
 			System.out.println("Sun Mon Tue Wed Thu Fri Sat");
 			System.out.println("============================");
-//			System.out.println("-----------------------------");
+			System.out.println("-----------------------------");
 
 	}
 	

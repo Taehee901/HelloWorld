@@ -1,8 +1,8 @@
 package com.yedam.api;
 
 public class Member extends Object {//모든클래스는 object를 상속하지만 생략되어있음..
-	String memberName;
-	int age;
+	public String memberName;
+	public int age;
 	
 	//생성자만듦(기본)
 	public Member() {}

@@ -5,7 +5,7 @@ public class StringUtil {
 	public static String getGender(String string) {
 		//문자열의 7번째
 		int pos = -1;
-		char pos = ;
+		char pos = string.charAt(pos);
 
 
 	}

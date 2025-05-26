@@ -30,7 +30,7 @@ public class SetExe {
 		//반복요소의 여부체크
 		while(iter.hasNext()) {//가져올요소가몇개인지알수없으니까..
 			String result = iter.next();//끄집어냄(있으면 한건)
-			System.out.println(result);
+			System.out.println(result);//더이상반복되는게없으면리턴
 		}
 	}
 }

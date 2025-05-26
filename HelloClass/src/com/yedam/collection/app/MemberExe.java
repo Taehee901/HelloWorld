@@ -16,7 +16,7 @@ public class MemberExe {
 		
 		
 //		Member[] members = new Member[10]; // 저장공간으로 배열을 선언.
-		List <Member> members = new ArrayList<>();
+		List <Member> members = new ArrayList<>();//컬렉션선언,담을수있는데이터member만
 //		members[0] = new Member();
 //		members.add(null)
 		//ctrl+shift+o->java.util
@@ -49,12 +49,12 @@ public class MemberExe {
 				//생성자로 다 지정해줘서 안해도됨
 
 				// 배열에 추가.
-				for (int i = 0; i < members.size(); i++) {
-					if (members.get(i) == null) {
-						members.get(i)= member;
+//				for (int i = 0; i < members.size(); i++) {
+					if (members.add(member)) {
+//						members.get(i)= member;
 						System.out.println("등록완료.");
-						break; // 한건을 추가했으면 반복문 종료.
-					}
+//						break; // 한건을 추가했으면 반복문 종료.
+//					}
 				}
 				break; // switch의 case 1 종료.
 
@@ -68,11 +68,12 @@ public class MemberExe {
 				//값가져오는부분 get
 				//매개값으로 전달 setPhone()
 				for (int i = 0; i < members.size(); i++) {
-					if (members.get(i) != null) {
+//					if (members.get(i) != null) {//컬렉션일경우null생각x
+					//배열 members[i]
 						if (members.get(i).getMemberId().equals(id)) {
-							members.get(i).setPhone(telNo); 
+							members.get(i).setPhone(telNo); //특정위치값가져옴
 							System.out.println("수정완료.");
-						}
+//						}
 					}
 				}
 				break;
@@ -83,11 +84,12 @@ public class MemberExe {
 
 				// 같은 값을 찾아서 삭제하기.
 				for (int i = 0; i < members.size(); i++) {
-					if (members.get(i) != null) {
+//					if (members.get(i) != null) {
 						if (members.get(i).getMemberId().equals(id)) {
-							members.get(i) = null;
+//							members[i] = null;
+							members.remove(i);
 							System.out.println("삭제완료.");
-						}
+//						}
 					}
 				}
 				break;

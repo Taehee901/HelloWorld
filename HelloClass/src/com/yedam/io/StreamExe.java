@@ -73,10 +73,12 @@ public class StreamExe {
 //					break;
 //				}
 //				os.write(data);//한바이트 한번 읽고 쓰기,
+				//read,buf크기만큼읽은 후 data 크기 저장
 				int data = is.read(buf);// 1바이트 읽음,읽기
 				if(data == -1) {//더이상 읽을 파일이 x  == end of file
 					break;
 				}
+				//buf fileoutBuffer전달 쌓임
 				os.write(buf);//한바이트 buf크기만큼 읽고 쓰기,byte크기를 10으로 해놨기에,한번에 10만큼쓰고읽음
 			}
 			os.close();

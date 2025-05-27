@@ -1,8 +1,8 @@
 package com.yedam.io;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -24,7 +24,7 @@ import java.util.List;
  * 역직렬화(Deserialization):기본 -> 객체
  * 
  * */
-
+//Serializable구현하는클래스로 선언해줌
 class Product implements Serializable{
 	String prodCode;//필드
 //	String prodName;
@@ -56,22 +56,24 @@ public class StreamExe4 {
 		
 	}
 	
-	static void serial() {//객체 ->출력스트림(기본타입으로 변환 후 저장해서)
+	static void serial() {//객체 ->출력스트림(기본타입으로 변환 후 저장해서),Object->byte(주소값,실제값x)
 		
 //		List<String> list = new ArrayList<>();//클래스 = 객체
 		List<Product> list = new ArrayList<>();
-		list.add(new Product("P001"));
+		list.add(new Product("P001"));//객체담음
 		list.add(new Product("P002"));
 		
 		try {
 			//기본스트림.
 			OutputStream os = new FileOutputStream("c:/temp/object.db");
 			//객체 입출력 보조 스트림.
+			//클래스가 Serializable를 구현하는 클래스여야지만 ObjectOutputStream가능
 			ObjectOutputStream oos = new ObjectOutputStream(os);
+			//알아서바로스트림에저장됨list
 			oos.writeObject(list);//객체 ,writeObject객체를 출력스트림에 전달 보조 스트림
 			oos.close();
 			os.close();
-		} catch (FileNotFoundException e) {
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}

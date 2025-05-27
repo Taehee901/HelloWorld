@@ -1,5 +1,5 @@
 package com.yedam.io;
-
+//채팅 프로그램UI만들어보기
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -45,6 +45,9 @@ public class StreamExe3 {
 				add();
 			case 2://수정
 				modify();
+				break;
+			case 3:
+				remove();
 				break;
 			case 5://종료 , 엎어쓰기
 				run = false;
@@ -93,7 +96,9 @@ public class StreamExe3 {
 	}//end of modify.
 	
 	//3삭제
-	
+	static void remove() {
+		System.out.println("삭제번호: ");
+	}
 	
 	
 	
@@ -106,11 +111,14 @@ public class StreamExe3 {
 //	}
 	//저장
 	static void save() {
+		//구조복잡해지면->객체를 바로 스트림에연결해서 전달하는방법있으면좋음
+		///object붙은게객체를처리하는보조스트림,기본스트림생성자매개값으로전달하면가능
 		//문자기반의 출력스트림.
 		try {
 			Writer writer = new FileWriter("c:/temp/studentList.txt");
 			//1001 70
 			for(Student student : studentList) {//studentList갯수만큼만 반복,반복횟수정해짐
+				//공백기준으로 문장만듦
 				String txt = student.getStudentNo() + " " + student.getScore() + "\n";
 				writer.write(txt);//데이터내보냄
 			}
@@ -129,11 +137,11 @@ public class StreamExe3 {
 		//add throw ~
 		Scanner scan = new Scanner(new File("c:/temp/studentList.txt"));
 		while(true) {
-			String txt = scan.nextLine();//한줄읽어옴
-			String[] strAry = txt.split(" ");// 1001 70, 나누어서1,2번째 배열에 각각 저장
+			String txt = scan.nextLine();//한줄읽어옴(문장한라인)
+			String[] strAry = txt.split(" ");// 1001 70, 공란기준 나누어서1,2번째 배열에 각각 저장
 			//studentList컬렉션에 추가.
 			//
-			studentList.add(new Student(Integer.parseInt(strAry[0]),////1001
+			studentList.add(new Student(Integer.parseInt(strAry[0]),//1001
 										Integer.parseInt(strAry[1]))//70							
 			);
 		}

@@ -1,0 +1,52 @@
+package com.yedam.vo;
+/*
+ * db의 테이블의 데이터(tbl_member)에 대용.
+ * */
+public class Member {
+	private String memberId; //member_id,관례
+	private String memberName;//member_name
+	private String phone;
+	private int point;
+	//생성자
+	public Member() {}
+	//생성자호출 한줄호출..
+	public Member(String memberId,String memberName,String phone,int point) {
+		this.memberId = memberId;
+		this.memberName = memberName;
+		this.phone = phone;
+		this.point = point;
+	}
+	//source - getter/setter
+	//getter,setter
+	public String getMemberId() {
+		return memberId;
+	}
+	public void setMemberId(String memberId) {
+		this.memberId = memberId;
+	}
+	public String getMemberName() {
+		return memberName;
+	}
+	public void setMemberName(String memberName) {
+		this.memberName = memberName;
+	}
+	public String getPhone() {
+		return phone;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+	public int getPoint() {
+		return point;
+	}
+	public void setPoint(int point) {
+		this.point = point;
+	}
+	//toString
+	@Override
+	public String toString() {
+		return "Member [memberId=" + memberId + ", memberName=" + memberName + ", phone=" + phone + ", point=" + point
+				+ "]";
+	}
+	
+}

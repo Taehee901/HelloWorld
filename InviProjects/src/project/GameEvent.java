@@ -10,8 +10,9 @@ public class GameEvent {
 	int eExp;
 	int eMoney;
 	String eAction;
-	
+	//랜덤 호출
 	//생성자
+	//객체 - 이름 a,a.get(i).f,mathrandom.0~몇가지 *a사이즈만큼.
 	public GameEvent() {}
 	public GameEvent(int eId,String eName,String eType,int eHp,int eAtk,int eDef,int eExp,int eMoney,String eAction) {
 		this.eId = eId;

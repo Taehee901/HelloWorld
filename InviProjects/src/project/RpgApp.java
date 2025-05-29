@@ -17,6 +17,7 @@ public class RpgApp {
 		// 메뉴
 		System.out.println("==============🎡🎆🎇⚔🎡🎆🎇⚔===============");
 		System.out.println("	  텍스트 기반 RPG게임 프로그램");
+		System.out.println("");
 		System.out.println("=============================================");
 		System.out.println("	1.캐릭터   2.불러오기  3.게임종료");
 		System.out.print("선택>>");
@@ -118,27 +119,28 @@ public class RpgApp {
 				System.out.print("선택>>");
 				String sen = scn.nextLine();
 				for(int i = 0;i<list.size();i++) {
-					for(int j = 0;j<glist.size();j++) {
+//					for(int j = 0;j<glist.size();j++) {
 						if(list.get(i).getChId().equals(sen)) {
 							System.out.println("게임을 시작하시겠습니까?");
 							System.out.println("1.y 2.n");
 							System.out.print(">>");
 							int selt = Integer.parseInt(scn.nextLine());
-							
-							switch(selt) {
-							case 1:
-								System.out.println("===================🏕게임 시작🏕========================");
-								System.out.println("Q." +list.get(i).getChName()+glist.get(j).geteId());																									
+//							for(int j = 0;j<glist.size();j++) {
+								switch(selt) {
+								//list에다가 퀘스트내용을 저장하게만들어주고,random으로 돌려서 출력
+								case 1:
+									System.out.println("===================🏕게임 시작🏕========================");
+									System.out.println("Q."+list.get(i).getChName());	
+									System.out.println("1.도망간다.");
+									System.out.println("2.싸운다.");
+								}
 							}
-
-						}
+//						}
 //						System.out.println(list.get(i).getChName() );
 					}
 
-				}
-				
-			
 				break;
+				
 			case 3:
 				System.out.print("삭제할 아이디 선택>>");
 				cid = scn.nextLine();

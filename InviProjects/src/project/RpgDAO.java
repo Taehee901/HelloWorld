@@ -79,9 +79,48 @@ public class RpgDAO extends DAO{//DAO상속
 				rpgchar.setChId(rs.getString("char_id"));
 				rpgchar.setChName(rs.getString("char_name"));
 				rpgchar.setChJob(rs.getString("char_job"));
-				rpgchar.setChAge(rs.getInt("point"));
+				rpgchar.setChAge(rs.getInt("char_age"));
+				rpgchar.setChExp(rs.getInt("char_exp"));
+				rpgchar.setChLv(rs.getInt("char_lv"));
+				rpgchar.setChGold(rs.getInt("char_money"));
+				rpgchar.setChHp(rs.getInt("char_hp"));
+				rpgchar.setChAb(rs.getString("char_ab"));
+				rpgchar.setChAtck(rs.getInt("char_atck"));
+				rpgchar.setChDef(rs.getInt("char_def"));
+				rpgchar.setChWeapon(rs.getString("char_weapon"));
 				//컬렉션 추가
 				list.add(rpgchar);
+				//rs - 여러건수담고 있음
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
+	
+	//게임이벤트
+	public List<GameEvent>gameInsert() {
+		String esql = "select * from rpg_event";
+		getConnect();
+		List<GameEvent> list = new ArrayList<GameEvent>();//컬렉션에 저장.
+		try {
+			psmt = conn.prepareStatement(esql);
+			rs = psmt.executeQuery();
+			while(rs.next()) {
+				GameEvent rpgge = new GameEvent();
+				
+				rpgge.seteId(rs.getInt("id"));
+				rpgge.seteName(rs.getString("name"));  
+				rpgge.seteType(rs.getString("e_type"));
+				rpgge.seteHp(rs.getInt("hp_chan"));
+				rpgge.seteAtk(rs.getInt("atk_chan"));
+				rpgge.seteDef(rs.getInt("def_chan"));
+				rpgge.seteExp(rs.getInt("exp_chan"));
+				rpgge.seteMoney(rs.getInt("money_chan"));
+				rpgge.seteAction(rs.getString("action"));
+				//컬렉션 추가
+				list.add(rpgge);
 				//rs - 여러건수담고 있음
 			}
 		} catch (SQLException e) {

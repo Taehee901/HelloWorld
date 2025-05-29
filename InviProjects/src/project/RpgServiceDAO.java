@@ -28,6 +28,10 @@ public class RpgServiceDAO implements RpgMemberService{
 		// TODO Auto-generated method stub
 		return rpg.select();
 	}
-	
-	
+
+	@Override
+	public List<GameEvent> addGame() {
+		return rpg.gameInsert();
+	}
+
 }

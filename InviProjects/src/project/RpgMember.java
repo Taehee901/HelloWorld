@@ -112,6 +112,5 @@ public class RpgMember {
 				+ chExp + ", chLv=" + chLv + ", chGold=" + chGold + ", chHp=" + chHp + ", chAb=" + chAb + ", chAtck="
 				+ chAtck + ", chDef=" + chDef + ", chWeapon=" + chWeapon + "]";
 	}
-
 	
 }

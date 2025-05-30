@@ -14,4 +14,6 @@ public interface RpgMemberService {
 	public boolean removeMember(String chId);//삭제
 	public List<RpgMember> memberList();//출력.,한건??
 	public List<GameEvent> addGame();
+	public List<RpgFoe> rpgfoe();
+	public List<RpgFoe> rpgFone();
 }

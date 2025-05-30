@@ -34,4 +34,16 @@ public class RpgServiceDAO implements RpgMemberService{
 		return rpg.gameInsert();
 	}
 
+	@Override
+	public List<RpgFoe> rpgfoe() {
+		// TODO Auto-generated method stub
+		return rpg.rpgfoes();
+	}
+
+	@Override
+	public List<RpgFoe> rpgFone() {
+		// TODO Auto-generated method stub
+		return rpg.rpgfogone();
+	}
+
 }

@@ -98,7 +98,6 @@ public class RpgDAO extends DAO{//DAO상속
 		return list;
 	}
 	
-	
 	//게임이벤트
 	public List<GameEvent>gameInsert() {
 		String esql = "select * from rpg_event";
@@ -113,11 +112,6 @@ public class RpgDAO extends DAO{//DAO상속
 				rpgge.seteId(rs.getInt("id"));
 				rpgge.seteName(rs.getString("name"));  
 				rpgge.seteType(rs.getString("e_type"));
-				rpgge.seteHp(rs.getInt("hp_chan"));
-				rpgge.seteAtk(rs.getInt("atk_chan"));
-				rpgge.seteDef(rs.getInt("def_chan"));
-				rpgge.seteExp(rs.getInt("exp_chan"));
-				rpgge.seteMoney(rs.getInt("money_chan"));
 				rpgge.seteAction(rs.getString("action"));
 				//컬렉션 추가
 				list.add(rpgge);
@@ -128,5 +122,61 @@ public class RpgDAO extends DAO{//DAO상속
 		}
 		return list;
 	}
-	
+	public List<RpgFoe> rpgfoes(){
+		String sql = "select * from rpg_monster";
+		getConnect();
+		List<RpgFoe> list = new ArrayList<RpgFoe>();//컬렉션에 저장.
+		try {
+			psmt = conn.prepareStatement(sql);
+			rs = psmt.executeQuery();
+			//한건
+			while(rs.next()) {
+				RpgFoe rpgfoe = new RpgFoe();
+				rpgfoe.setMonId(rs.getInt("mon_id"));
+				rpgfoe.setMonName(rs.getString("mon_name"));
+				rpgfoe.setMonType(rs.getString("mon_type"));
+				rpgfoe.setMonRare(rs.getNString("mon_rare"));
+				rpgfoe.setMonLv(rs.getInt("mon_lv"));
+				rpgfoe.setMonRewGold(rs.getInt("mon_money"));
+				rpgfoe.setMonHp(rs.getInt("mon_hp"));
+				rpgfoe.setMonAtk(rs.getInt("mon_atk"));
+				rpgfoe.setMonDef(rs.getInt("mon_def"));
+				//컬렉션 추가
+				list.add(rpgfoe);
+				//rs - 여러건수담고 있음
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}	
+	//다건,한건..
+	public List<RpgFoe> rpgfogone(){
+		String sql = "select * from rpg_monster where mon_name =?";
+		getConnect();
+		List <RpgFoe> list = new ArrayList<RpgFoe>();
+		try {
+			psmt = conn.prepareStatement(sql);
+			rs = psmt.executeQuery();
+			//한건
+			while(rs.next()) {
+				RpgFoe rpgfoe = new RpgFoe();
+				rpgfoe.setMonId(rs.getInt("mon_id"));
+				rpgfoe.setMonName(rs.getString("mon_name"));
+				rpgfoe.setMonType(rs.getString("mon_type"));
+				rpgfoe.setMonRare(rs.getNString("mon_rare"));
+				rpgfoe.setMonLv(rs.getInt("mon_lv"));
+				rpgfoe.setMonRewGold(rs.getInt("mon_money"));
+				rpgfoe.setMonHp(rs.getInt("mon_hp"));
+				rpgfoe.setMonAtk(rs.getInt("mon_atk"));
+				rpgfoe.setMonDef(rs.getInt("mon_def"));
+				//컬렉션 추가
+				list.add(rpgfoe);
+				//rs - 여러건수담고 있음
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
 }

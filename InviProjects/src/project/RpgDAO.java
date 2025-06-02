@@ -138,6 +138,7 @@ public class RpgDAO extends DAO{//DAO상속
 				rpgfoe.setMonRare(rs.getNString("mon_rare"));
 				rpgfoe.setMonLv(rs.getInt("mon_lv"));
 				rpgfoe.setMonRewGold(rs.getInt("mon_money"));
+				rpgfoe.setMonExp(rs.getInt("mon_exp"));
 				rpgfoe.setMonHp(rs.getInt("mon_hp"));
 				rpgfoe.setMonAtk(rs.getInt("mon_atk"));
 				rpgfoe.setMonDef(rs.getInt("mon_def"));

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com/yedam/mapper/BoardMapper">
+<!-- id 메소드이름,resultType는 return되는 타입 -->
+<!-- test는 배포와 관련x 테스트해도됨 -->
+  <!-- 조회(selectBoard),메소드 이름 -->
+  <select id="selectList" resultType="com.yedam.vo.BoardVO">
+    <!-- select * from tbl_board , select board_no as-->
+    select * from tbl_board 
+  </select>
+  
+  <!-- 등록(insertBoard) -->
+  <!-- 태그는 insert를 써야 함,파라미터로전달하는 데이터타입은 BoardVO => 이름이 같아 컬럼이라 생각할 수 있지만 #{필드값(필드이름적어주면됨)},jdbc ?-->
+  <insert id="insertBoard" parameterType="com.yedam.vo.BoardVO">
+  	insert into tbl_board (board_no,title,content,writer)
+  	values(board_seq.nextval, #{title},#{content}, #{writer})
+  </insert>
+  
+  <!-- 수정(updateBoard) com.yedam.vo.BoardVO-->
+  <update id="updateBoard" parameterType="com.yedam.vo.BoardVO" >
+  	update tbl_board
+  	where board_no = #{boardNo}
+  	
+  	<!-- 첫번째 널이면 두번째값 씀 -->
+<!-- set    title = nvl(#{title},title) -->  
+<set>
+  	<!-- 널 체크 -->
+  	<if test="title != null">
+  		title = #{title},
+  	</if>
+  	<if test="content != null">
+  		content = #{content},
+  	</if>
+  	<if test="writer != null">
+  		writer = #{writer}
+  	</if>
+</set>	
+  </update>
+  
+  <!-- 삭제(deleteBoard) parameterType = "int" -->
+  <delete id="deleteBoard" parameterType="int">
+  	delete from tbl_board
+  	where  board_no = #{boardNo}
+  </delete>
+<!-- set 값이 있으면 적절한거 넣어줌,없던말던 set에 넣어주면알아서처리 -->
+</mapper>

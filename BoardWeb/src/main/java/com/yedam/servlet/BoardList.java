@@ -1,0 +1,86 @@
+package com.yedam.servlet;
+
+//톰캣부재오류
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.ibatis.session.SqlSession;
+
+import com.yedam.common.DataSource;
+import com.yedam.mapper.BpardMapper;
+//1.url 
+import com.yedam.vo.BoardVO;
+
+/**
+ * Servlet implementation class BoardList
+ */
+//url""치명 doPost실행
+// (/경로)
+@WebServlet("/boardList.serv") // HttpServlet를 상속받은 BoardList클래스라 그냥 서블렛이라 함
+public class BoardList extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * Default constructor.
+	 */
+	public BoardList() {
+		// TODO Auto-generated constructor stub
+	}
+
+//동적 가지고있는 데이터몇건이냐에따라 보여지는게 달라짐
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		// getWriter()응답정보가리킴,웹은 http연결방식,클라이언트 요청정보 서버전달
+		// HttpServletRequest 요청정보 담기위한
+		// 응답정보를 담아 처리 클라이언트에 보여짐HttpServletResponse
+
+		// 컨텐츠 담고 있는 정보 지정.
+		response.setContentType("text/html;charset=utf-8");
+		PrintWriter out = response.getWriter();// String 기반 출력스트림,클라이언트연결시 클라이언트 웹 브라우저에 연결됨
+		// append문장연결
+		out.print("<h3>hello</h3>");
+		out.print("집가고싶다");
+		SqlSession sqlSession //
+		 = DataSource.getInstance().openSession();
+		
+		//인터페이스 - 매퍼.
+		BpardMapper mapper = sqlSession.getMapper(BpardMapper.class);
+		List<BoardVO> list = mapper.selectList();
+		
+		out.print("<table border = '1'>");
+		out.print("<thead><tr><th>글번호</th><th>제목</th><th>작성자</th></tr></thead>");
+		out.print("<tbody>");
+		for(int i = 0;i<list.size();i++) {
+			out.print("<tr>");
+			out.print("<td align='center'>"+list.get(i).getBoardNo()+"</td>");
+			out.print("<td>"+list.get(i).getTitle()+"</td>");
+			out.print("<td>"+list.get(i).getWriter()+"</td>");
+			out.print("</tr>");			
+		}
+		out.print("</tbody></table>");
+
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+
+}

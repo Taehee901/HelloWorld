@@ -10,6 +10,7 @@
     <!-- select * from tbl_board , select board_no as-->
     select * from tbl_board 
     order by board_no asc
+    <!-- db데이터안들어가는거해결 -->
     <!-- 최신글: order by board_no desc -->
   </select>
   

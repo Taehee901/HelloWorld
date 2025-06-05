@@ -5,6 +5,7 @@
   <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
   
+
    <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -30,9 +31,9 @@
     <artifactId>lombok</artifactId>
     <version>1.18.38</version>
 </dependency>
-</dependencies>
-  
-  
+
+  </dependencies>
+
   <build>
     <plugins>
       <plugin>

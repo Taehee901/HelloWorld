@@ -2,11 +2,7 @@ package com.yedam.vo;
 
 import java.util.Date;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 /*
  * 필드,생성자,메소드(getter,setter)만드는 부분

@@ -14,7 +14,9 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.ibatis.session.SqlSession;
 
 import com.yedam.common.DataSource;
-import com.yedam.mapper.BpardMapper;
+import com.yedam.mapper.BoardMapper;
+import com.yedam.service.BoardService;
+import com.yedam.service.BoardServiceImpl;
 //1.url 
 import com.yedam.vo.BoardVO;
 
@@ -23,14 +25,16 @@ import com.yedam.vo.BoardVO;
  */
 //url""치명 doPost실행
 // (/경로)
-@WebServlet("/boardList.serv") // HttpServlet를 상속받은 BoardList클래스라 그냥 서블렛이라 함
+//http://localhost/boardWeb생략
+@WebServlet("/servlet/boardList.serv") //BoardList - doget에있는게실행
+//@WebServlet("/html/boardList.serv") // HttpServlet를 상속받은 BoardList클래스라 그냥 서블렛이라 함
 public class BoardList extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * Default constructor.
 	 */
-	public BoardList() {
+	public BoardList() {//doget,dopost - 톰캣지정
 		// TODO Auto-generated constructor stub
 	}
 
@@ -51,13 +55,18 @@ public class BoardList extends HttpServlet {
 		PrintWriter out = response.getWriter();// String 기반 출력스트림,클라이언트연결시 클라이언트 웹 브라우저에 연결됨
 		// append문장연결
 		out.print("<h3>hello</h3>");
-		out.print("집가고싶다");
-		SqlSession sqlSession //
-		 = DataSource.getInstance().openSession();
+		out.print("<p>집가고싶다</p>");
+//		SqlSession sqlSession //
+//		 = DataSource.getInstance().openSession();
 		
 		//인터페이스 - 매퍼.
-		BpardMapper mapper = sqlSession.getMapper(BpardMapper.class);
-		List<BoardVO> list = mapper.selectList();
+		
+		//업무 서비스
+//		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
+//		List<BoardVO> list = mapper.selectList();
+//		
+		BoardService svc = new BoardServiceImpl();
+		List<BoardVO> list = svc.boardList();
 		
 		out.print("<table border = '1'>");
 		out.print("<thead><tr><th>글번호</th><th>제목</th><th>작성자</th></tr></thead>");
@@ -65,12 +74,14 @@ public class BoardList extends HttpServlet {
 		for(int i = 0;i<list.size();i++) {
 			out.print("<tr>");
 			out.print("<td align='center'>"+list.get(i).getBoardNo()+"</td>");
-			out.print("<td>"+list.get(i).getTitle()+"</td>");
+			out.print("<td><a href='../board.serv?bno="+list.get(i).getBoardNo()+"'>"+list.get(i).getTitle()+"</a></td>");
 			out.print("<td>"+list.get(i).getWriter()+"</td>");
 			out.print("</tr>");			
 		}
 		out.print("</tbody></table>");
-
+		//index페이지 이동
+		//index랑 같은경로에 있음
+		out.print("<a href='../index.html'>인덱스페이지</a>");
 	}
 
 	/**

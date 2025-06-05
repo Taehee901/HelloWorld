@@ -20,7 +20,7 @@ public class DataSource {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		//sqlsession여러개담고있음
+		//sqlsession여러개담고있음 툴,open
 		SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
 		return sqlSessionFactory;//리턴반환없으면에러
 	}

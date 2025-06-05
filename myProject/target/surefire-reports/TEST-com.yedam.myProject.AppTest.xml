@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.yedam.myProject.AppTest" time="0.249" tests="1" errors="1" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.yedam.myProject.AppTest" time="0.246" tests="1" errors="1" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.cpu.isalist" value="amd64"/>
     <property name="sun.jnu.encoding" value="MS949"/>
-    <property name="java.class.path" value="D:\div\workspace\myProject\target\test-classes;D:\div\workspace\myProject\target\classes;C:\Users\admin\.m2\repository\junit\junit\3.8.1\junit-3.8.1.jar;C:\Users\admin\.m2\repository\org\mybatis\mybatis\3.5.19\mybatis-3.5.19.jar;C:\Users\admin\.m2\repository\com\oracle\database\jdbc\ojdbc10\19.27.0.0\ojdbc10-19.27.0.0.jar;C:\Users\admin\.m2\repository\org\projectlombok\lombok\1.18.38\lombok-1.18.38.jar;"/>
+    <property name="java.class.path" value="D:\div\git\HelloWorld\myProject\target\test-classes;D:\div\git\HelloWorld\myProject\target\classes;C:\Users\admin\.m2\repository\junit\junit\3.8.1\junit-3.8.1.jar;C:\Users\admin\.m2\repository\org\mybatis\mybatis\3.5.19\mybatis-3.5.19.jar;C:\Users\admin\.m2\repository\com\oracle\database\jdbc\ojdbc10\19.27.0.0\ojdbc10-19.27.0.0.jar;C:\Users\admin\.m2\repository\org\projectlombok\lombok\1.18.38\lombok-1.18.38.jar;"/>
     <property name="java.vm.vendor" value="Eclipse Adoptium"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="user.variant" value=""/>
@@ -15,9 +15,9 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="KR"/>
     <property name="sun.boot.library.path" value="D:\div\eclipse\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_21.0.6.v20250130-0529\jre\bin"/>
-    <property name="sun.java.command" value="C:\Users\admin\AppData\Local\Temp\surefire2463038443732520510\surefirebooter-20250604141932807_3.jar C:\Users\admin\AppData\Local\Temp\surefire2463038443732520510 2025-06-04T14-19-32_745-jvmRun1 surefire-20250604141932807_1tmp surefire_0-20250604141932807_2tmp"/>
+    <property name="sun.java.command" value="C:\Users\admin\AppData\Local\Temp\surefire16672173488640962541\surefirebooter-20250605085815740_3.jar C:\Users\admin\AppData\Local\Temp\surefire16672173488640962541 2025-06-05T08-58-15_603-jvmRun1 surefire-20250605085815740_1tmp surefire_0-20250605085815740_2tmp"/>
     <property name="jdk.debug" value="release"/>
-    <property name="surefire.test.class.path" value="D:\div\workspace\myProject\target\test-classes;D:\div\workspace\myProject\target\classes;C:\Users\admin\.m2\repository\junit\junit\3.8.1\junit-3.8.1.jar;C:\Users\admin\.m2\repository\org\mybatis\mybatis\3.5.19\mybatis-3.5.19.jar;C:\Users\admin\.m2\repository\com\oracle\database\jdbc\ojdbc10\19.27.0.0\ojdbc10-19.27.0.0.jar;C:\Users\admin\.m2\repository\org\projectlombok\lombok\1.18.38\lombok-1.18.38.jar;"/>
+    <property name="surefire.test.class.path" value="D:\div\git\HelloWorld\myProject\target\test-classes;D:\div\git\HelloWorld\myProject\target\classes;C:\Users\admin\.m2\repository\junit\junit\3.8.1\junit-3.8.1.jar;C:\Users\admin\.m2\repository\org\mybatis\mybatis\3.5.19\mybatis-3.5.19.jar;C:\Users\admin\.m2\repository\com\oracle\database\jdbc\ojdbc10\19.27.0.0\ojdbc10-19.27.0.0.jar;C:\Users\admin\.m2\repository\org\projectlombok\lombok\1.18.38\lombok-1.18.38.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="user.home" value="C:\Users\admin"/>
     <property name="user.language" value="ko"/>
@@ -25,13 +25,13 @@
     <property name="java.version.date" value="2025-01-21"/>
     <property name="java.home" value="D:\div\eclipse\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_21.0.6.v20250130-0529\jre"/>
     <property name="file.separator" value="\"/>
-    <property name="basedir" value="D:\div\workspace\myProject"/>
+    <property name="basedir" value="D:\div\git\HelloWorld\myProject"/>
     <property name="style.color" value="always"/>
     <property name="java.vm.compressedOopsMode" value="Zero based"/>
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\admin\AppData\Local\Temp\surefire2463038443732520510\surefirebooter-20250604141932807_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\admin\AppData\Local\Temp\surefire16672173488640962541\surefirebooter-20250605085815740_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="21.0.6+7-LTS"/>
@@ -47,7 +47,7 @@
     <property name="java.vendor.url.bug" value="https://github.com/adoptium/adoptium-support/issues"/>
     <property name="java.io.tmpdir" value="C:\Users\admin\AppData\Local\Temp\"/>
     <property name="java.version" value="21.0.6"/>
-    <property name="user.dir" value="D:\div\workspace\myProject"/>
+    <property name="user.dir" value="D:\div\git\HelloWorld\myProject"/>
     <property name="os.arch" value="amd64"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
     <property name="sun.os.patch.level" value=""/>
@@ -60,7 +60,7 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="65.0"/>
   </properties>
-  <testcase name="testApp" classname="com.yedam.myProject.AppTest" time="0.238">
+  <testcase name="testApp" classname="com.yedam.myProject.AppTest" time="0.233">
     <error message="&#10;### Error building SqlSession.&#10;### The error may exist in com/yedam/mapper/BoardMapper.xml&#10;### Cause: org.apache.ibatis.builder.BuilderException: Error parsing SQL Mapper Configuration. Cause: java.io.IOException: Could not find resource com/yedam/mapper/BoardMapper.xml" type="org.apache.ibatis.exceptions.PersistenceException"><![CDATA[org.apache.ibatis.exceptions.PersistenceException: 
 
 ### Error building SqlSession.
@@ -70,7 +70,7 @@
 	at org.apache.ibatis.session.SqlSessionFactoryBuilder.build(SqlSessionFactoryBuilder.java:82)
 	at org.apache.ibatis.session.SqlSessionFactoryBuilder.build(SqlSessionFactoryBuilder.java:66)
 	at com.yedam.common.DataSource.getInstance(DataSource.java:24)
-	at com.yedam.myProject.AppTest.testApp(AppTest.java:47)
+	at com.yedam.myProject.AppTest.testApp(AppTest.java:51)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at junit.framework.TestCase.runTest(TestCase.java:154)

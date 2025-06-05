@@ -13,7 +13,7 @@
 </head>
 <body>
     <!-- 요청방식지정,get:사용자입력값(header)url주소값다나옴,글자수제한 post:비번(body)영역에데이터들어가서버로전송함,url파라미터보이지않고전송글자제한없음,인코딩방식지정해줘야함 -->
-  <form action="../addBoard.do" method="post">
+  <form action="addBoard.do" method="post">
 	<table class="table" >
 		<tr>
 		<th>제목</th>

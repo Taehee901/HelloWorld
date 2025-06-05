@@ -15,32 +15,19 @@ import com.yedam.vo.BoardVO;
 public class AddBoardControl implements Control {
 
 	@Override
-	public void exec(HttpServletRequest req, HttpServletResponse resp) {
+	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		//한글처리.
-		try {
-			req.setCharacterEncoding("utf-8");
-		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
+		req.setCharacterEncoding("utf-8");
 		
 		//요청방식 (GET/ POST)구분 처리.
 		if(req.getMethod().equals("GET")) {
 			//WEB-INF/jsp/addBoard.jsp ->실페이지는 addBpard.do
 			//getRequestDispatcher현재이페이지에서("")매개값페이지로재지정하겠습니다.
-			try {
-				req.getRequestDispatcher("WEB-INF/jsp/addBoard.jsp").forward(req, resp);
-			} catch (ServletException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			req.getRequestDispatcher("WEB-INF/jsp/addBoard.jsp").forward(req, resp);
 
 		}else if(req.getMethod().equals("POST")) { //글 등록
 			//POST요청
+			//url치고누르거나 get,post폼태그안매소드이용,ajax
 			String title = req.getParameter("title");
 			String content = req.getParameter("content");
 			String writer = req.getParameter("writer");

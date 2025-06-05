@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: com.yedam.myProject.AppTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.249 s <<< FAILURE! -- in com.yedam.myProject.AppTest
-com.yedam.myProject.AppTest.testApp -- Time elapsed: 0.238 s <<< ERROR!
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.246 s <<< FAILURE! -- in com.yedam.myProject.AppTest
+com.yedam.myProject.AppTest.testApp -- Time elapsed: 0.233 s <<< ERROR!
 org.apache.ibatis.exceptions.PersistenceException: 
 
 ### Error building SqlSession.
@@ -12,7 +12,7 @@ org.apache.ibatis.exceptions.PersistenceException:
 	at org.apache.ibatis.session.SqlSessionFactoryBuilder.build(SqlSessionFactoryBuilder.java:82)
 	at org.apache.ibatis.session.SqlSessionFactoryBuilder.build(SqlSessionFactoryBuilder.java:66)
 	at com.yedam.common.DataSource.getInstance(DataSource.java:24)
-	at com.yedam.myProject.AppTest.testApp(AppTest.java:47)
+	at com.yedam.myProject.AppTest.testApp(AppTest.java:51)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at junit.framework.TestCase.runTest(TestCase.java:154)

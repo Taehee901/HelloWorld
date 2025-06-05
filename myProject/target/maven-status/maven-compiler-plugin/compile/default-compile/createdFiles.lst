@@ -1,3 +1,4 @@
 com\yedam\myProject\App.class
+com\yedam\mapper\BpardMapper.class
 com\yedam\common\DataSource.class
 com\yedam\vo\BoardVO.class

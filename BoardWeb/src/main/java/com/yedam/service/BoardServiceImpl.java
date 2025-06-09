@@ -41,4 +41,25 @@ public class BoardServiceImpl implements BoardService{
 		 return false; //숫자int 1와 같으면 정상값 boolean 선언
 	}
 
+	@Override
+	public boolean modifyBoard(BoardVO board) {
+		int r = mapper.updateBoard(board);
+		if(r == 1) {
+			 sqlSession.commit();//커밋처리
+			 return true;
+		}
+		return false;
+	}
+
+	@Override
+	public BoardVO removeBoard(int bno) {
+		BoardVO board = mapper.selectBoard(bno);//글번호 기준으로 ->조회
+		if(board != null) {
+			mapper.deleteBoard(bno);//글번호 해당되는 -> 조회수 증가
+			sqlSession.commit();//커밋처리
+		}
+		return board;
+	}
+
+
 }

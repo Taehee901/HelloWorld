@@ -14,6 +14,6 @@ public interface BoardMapper {
 	public BoardVO selectBoard(int bno);//단건조회,처리건수 반환하는걸로 정해져있음,resulttype따로 선언x
 	public int updateReadCnt(int bno);//조회 count증가
 	public int insertList(BoardVO board);
-	public int updateList(BoardVO board);
-	public int deleteList(int bno);
+	public int updateBoard(BoardVO board);
+	public int deleteBoard(int bno);
 }

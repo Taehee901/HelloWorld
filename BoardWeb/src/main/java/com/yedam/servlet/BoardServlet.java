@@ -77,7 +77,7 @@ public class BoardServlet extends HttpServlet{
 		str += "<tr><th>제목</th><td colspan='3'>"+board.getTitle()+"</td></tr>";
 		str += "<tr><th>내용</th><td colspan='3'>"+board.getContent()+"</td></tr>";
 		str += "<tr><th>작성자</th><td colspan='3'>"+board.getWriter()+"</td></tr>";
-//		str += "<tr><th>작성일시</th><td colsapn='3'>"+sdf.format(board.getWriterDate())+"</td></tr>";
+		str += "<tr><th>작성일시</th><td colsapn='3'>"+sdf.format(board.getWriteDate())+"</td></tr>";
 		str += "</tbody>";
 		str += "</table>";
 		str += "<p><a href='servlet/boardList.serv'>목록이동</a></p>";

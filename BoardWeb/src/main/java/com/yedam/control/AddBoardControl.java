@@ -22,13 +22,13 @@ public class AddBoardControl implements Control {
 		//요청방식 (GET/ POST)구분 처리.
 		if(req.getMethod().equals("GET")) {
 			//WEB-INF/jsp/addBoard.jsp ->실페이지는 addBpard.do
-			//getRequestDispatcher현재이페이지에서("")매개값페이지로재지정하겠습니다.
+			//getRequestDispatcher현재이페이지에서("")매개값페이지로재지정하겠습니다.,현재페이지는 add~ url값을 WEB-INF/jsp/addBoard.jsp(경로) -> frontcontrol가 제어하기위해 이리함
 			req.getRequestDispatcher("WEB-INF/jsp/addBoard.jsp").forward(req, resp);
-
-		}else if(req.getMethod().equals("POST")) { //글 등록
+			//dispatcher없을시 addboard.do에 머물러있는상태,forward메소드가 실제페이지이동하게해줌
+		}else if(req.getMethod().equals("POST")) { //글 등록(한건 db)
 			//POST요청
 			//url치고누르거나 get,post폼태그안매소드이용,ajax
-			String title = req.getParameter("title");
+			String title = req.getParameter("title");//파라미터->boardService전달
 			String content = req.getParameter("content");
 			String writer = req.getParameter("writer");
 			
@@ -45,6 +45,8 @@ public class AddBoardControl implements Control {
 				//목록페이지로 이동
 				//sendRedirect현재페이지에서 새페이지로 이동
 //				resp.sendRedirect("servlet/boardList.serv");
+				//sendRedirect응답결과를 이화면이 아닌 ""페이지에 재지정
+				resp.sendRedirect("boardList.do");
 			}else {
 				System.out.println("등록실패");
 			}

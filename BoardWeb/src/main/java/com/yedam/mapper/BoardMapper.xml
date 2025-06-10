@@ -15,18 +15,70 @@
   
   <!-- 페이징 조회() <에러 새로운 태그시작으로 인식 ㅊ데이타태크 -->
   <!-- <![CDATA[로 감싸줘야지 부등호로 인식한다. -->
-  <select id="selectListWithPaging" parameterType="int" resultType="Board">
+  <!-- 
+    <select id="selectListWithPaging" parameterType="int" resultType="Board">
    select b.*  
    from  (select rownum rn, a.*
           from  (select *
                  from   tbl_board
                  order by board_no desc) a)b
-<!--where  b.rn >= 1(:page -1) *5-->
-<!--and    b.rn >= 5;-->
+where  b.rn >= 1(:page -1) *5
+and    b.rn >= 5;
 	<![CDATA[
           where  b.rn > (#{page} -1) *5
 			and   b.rn <= #{page} * 5
 	]]>
+  </select>
+   -->
+  <select id="selectListWithPaging" parameterType="Search" resultType="Board">
+   select b.*  
+   from  (select rownum rn, a.*
+          from  (select *
+                 from   tbl_board
+                 <!-- when 조건문넣음,쿼리가아니라 자바코드가 들어감 이스케이프나,문자열사용하면됨, when = else if '%'test%'  || 두문장연결할때사용-->
+                 <choose>
+                 <!-- CDATA를 select문 위에하면어떨게되나,태그기호를 인식하지말고 부등호로인식하기위해,t면 title칼럼에서 입력값조회하겠다는의미,toString은 이스케이프문자쓰기 복잡하니까 덜복잡하게쓰기위해서,toSting메소드를 사용하거나  -->
+                 	<when test="searchCondition != null and searchCondition == 'T'.toString()">
+                 		where title like '%'||#{keyword}||'%' 
+                 	</when>
+                 	<when test="searchCondition != null and searchCondition =='W'.toString()">
+                 		where writer like '%'||#{keyword}||'%'
+                 	</when>
+                 	<when test="searchCondition != null and searchCondition == 'TW'.toString()">
+                 		where (title like '%'||#{keyword}||'%') or (writer like '%'||#{keyword}||'%')
+                 	</when>
+                 </choose>
+                 order by board_no desc) a)b
+          where  b.rn > (#{page} -1) *5
+<!--where  b.rn >= 1(:page -1) *5-->
+<!--and    b.rn >= 5;-->
+	<![CDATA[
+			and   b.rn <= #{page} * 5
+	]]>
+  </select>
+  
+  <!-- selectCount()전체 카운트 계산 selectCount= 메퍼 이름 같아야함
+  1 컬럼이라는 뜻 = *써도됨 
+    <select id="selectCount" resultType="int">
+  	select count(1)
+  	from   tbl_board 
+  </select>
+  -->
+  <select id="selectCount" resultType="int" parameterType="Search">
+  	select count(1)
+  	from   tbl_board 
+  	  <choose>
+         <!-- CDATA를 select문 위에하면어떨게되나,태그기호를 인식하지말고 부등호로인식하기위해,t면 title칼럼에서 입력값조회하겠다는의미,toString은 이스케이프문자쓰기 복잡하니까 덜복잡하게쓰기위해서,toSting메소드를 사용하거나  -->
+          <when test="searchCondition != null and searchCondition == 'T'.toString()">
+             where title like '%'||#{keyword}||'%' 
+          </when>
+          <when test="searchCondition != null and searchCondition =='W'.toString()">
+            where writer like '%'||#{keyword}||'%'
+          </when>
+          <when test="searchCondition != null and searchCondition == 'TW'.toString()">
+            where (title like '%'||#{keyword}||'%') or (writer like '%'||#{keyword}||'%')
+           </when>
+     </choose>
   </select>
   
   

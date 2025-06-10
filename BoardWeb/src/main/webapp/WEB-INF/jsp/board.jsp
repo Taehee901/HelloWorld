@@ -35,7 +35,7 @@
         </tr>
         <tr>
             <td colspan="4" align="center">
-                <input type="submit" value="수정">
+                <input type="submit" value="수정"class="btn btn-warning">
                 <!-- submit이면 input태그랑 같아서 modifyForm로 이동이 된다 -->
                 <button class="btn btn-danger" type="button">삭제</button>
             </td>

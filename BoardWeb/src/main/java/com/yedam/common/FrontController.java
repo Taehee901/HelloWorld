@@ -36,7 +36,7 @@ public class FrontController extends HttpServlet{//HttpServlet를 상속받은 �
 		//키값읽어오면해당되는값가져옴,map - 키 문자열url패턴 control,exe메소드구현해야함,인터페이스
 		map.put("/boardList.do", new BoardListControl());//글목록
 		map.put("/board.do",new BoardControl());//상세화면
-		map.put("/addBoard.do",new AddBoardControl());
+		map.put("/addBoard.do",new AddBoardControl());//어떤페이지요청파악,페이지값들어오면 해당되는 구현클래스에서(컨트롤)반환-exec실행
 		map.put("/modifyForm.do", new ModifyBoardControl());
 		//흐름파악 url-실행컨트롤
 		map.put("/removeBoard.do", new RemoveBoardControl());

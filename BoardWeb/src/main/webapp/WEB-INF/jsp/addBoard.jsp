@@ -13,9 +13,13 @@
 </head>
 <body> -->
 	<jsp:include page="../include/header.jsp"/>
+	<%
+		String logId = (String)session.getAttribute("logId");
+	%>
 	<h3>글등록화면(addBoard.jsp)</h3>
     <!-- 요청방식지정,get:사용자입력값(header)url주소값다나옴,글자수제한 post:비번(body)영역에데이터들어가서버로전송함,url파라미터보이지않고전송글자제한없음,인코딩방식지정해줘야함 -->
   <form action="addBoard.do" method="post">
+  <input type="hidden" class = "form-control"name="writer"value="<%=logId%>">
 	<table class="table" >
 		<tr>
 		<th>제목</th>
@@ -26,12 +30,13 @@
 		<td><input type="text" name="content"></td>
 		</tr>
 		<tr>
-		<th>작성자</th><td><input type="text" name="writer"></td>
+		<!-- <th>작성자</th><td><input type="text" name="writer"></td> 사용자가입력한게아니라로그인으로변경 -->
+		<th>작성자</th><td><%=logId %></td>
 		</tr>
 		<tr>
-		  <td colspan="2">
-		  	<input type="submit" value="등록">
-		  	<input type="reset" value="취소">
+		  <td colspan="2" align="center">
+		  	<input type="submit" value="등록" class="btn btn-outline-success">
+		  	<input type="reset" value="취소"class="btn btn-outline-danger">
 		  </td>
 		</tr>
 	</table>

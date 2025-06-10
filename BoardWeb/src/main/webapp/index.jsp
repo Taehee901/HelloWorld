@@ -26,7 +26,7 @@
 	}//end of for.
 	//여기 자바 영역.
 	BoardService svc = new BoardServiceImpl();
-	List <BoardVO> list = svc.boardList(1);//1페이지본다는의미
+	List <BoardVO> list = svc.boardList(null);//1페이지본다는의미
 	out.print("<ul>");
 	//자바에서 html을 사용하려면<% 		
 	for(BoardVO board : list){

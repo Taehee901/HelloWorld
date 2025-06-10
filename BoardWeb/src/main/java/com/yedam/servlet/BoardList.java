@@ -66,7 +66,7 @@ public class BoardList extends HttpServlet {
 //		List<BoardVO> list = mapper.selectList();
 //		서블릿이 뭐다를 테스트하기위해쓴거 1들어간거 아무의미도 없다
 		BoardService svc = new BoardServiceImpl();
-		List<BoardVO> list = svc.boardList(1);
+		List<BoardVO> list = svc.boardList(null);
 		
 		out.print("<table border = '1'>");
 		out.print("<thead><tr><th>글번호</th><th>제목</th><th>작성자</th></tr></thead>");

@@ -1,11 +1,14 @@
 package com.yedam.control;
 
 import java.io.IOException;
+import java.net.URLDecoder;
 import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.apache.tomcat.util.buf.UEncoder;
 
 import com.yedam.common.Control;
 import com.yedam.common.PageDTO;
@@ -29,8 +32,11 @@ public class BoardListControl implements Control{
 		String page = req.getParameter("page");
 		page = page == null ? "1" : page;// boardList.do =>1페이지 출력.
 		String sc = req.getParameter("searchCondition");
+		sc = sc == null ? "" : sc; //null값인 경우
 		//키워드 값도 가져워야함
 		String kw = req.getParameter("keyword");
+		kw = kw == null ? "" :kw;
+		kw = URLDecoder.decode(kw);//16진수 -> 한글
 		//검색조건.
 		SearchDTO search = new SearchDTO();
 		//페이지값
@@ -58,8 +64,9 @@ public class BoardListControl implements Control{
 		req.setAttribute("blist", list); //요청정보에담아서(req) jsp로 전달
 		req.setAttribute("pageInfo", paging);
 		req.setAttribute("search", search);
-		//요청재지정(페이지이동)
- 		req.getRequestDispatcher("WEB-INF/jsp/boardList.jsp").forward(req, resp);
+		//요청재지정(페이지이동),jsp에보내주면 화면보여주기만하면됌 실제결과 .jsp파일 실요청control.view
+		//한번요청하면연결끊어지는 http 특징을,ex)로그인 1번하고 끊기면 재로그인필요,서버에서갖다씀,세션은 로그아웃되기전 끊어지는데,특정시간 및 세션끊지않을경우 계속공유할방식,정보유지시간김
+ 		req.getRequestDispatcher("WEB-INF/jsp/boardList.jsp").forward(req, resp);//없을 경우 out.print("<html>")방식으로 만들어줘야함
 	}
 
 }

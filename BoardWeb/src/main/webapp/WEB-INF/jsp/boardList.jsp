@@ -67,8 +67,10 @@
         <tbody>
             <%for(BoardVO board : list) {%>
             <tr>
-                <!-- <%=board.getBoardNo()%> -->
-                <td><a href="board.do?bno=<%=board.getBoardNo()%>"><%=board.getBoardNo() %></a></td>
+                <!-- <%=board.getBoardNo()%> 하나의값 줄바꿈도하나의 값으로 인식해서 (+++)이런식으로나와안됨,문자열을 하나로만든후 불러올수o-->
+                <!-- 파라미터전달 searchCondition=T&keyword=Test&page=3 key:value형식값전달-->
+                <td><a href="board.do?bno=<%=board.getBoardNo()%>&searchCondition=<%=search.getSearchCondition()%>&page=<%=paging.getCurrentPage()%>&keyword=<%=search.getKeyword()%>"><%=board.getBoardNo() %></a></td>
+                <!--<td><a href="board.do?bno=<%=board.getBoardNo()%>&searchCondition=<%=search.getSearchCondition()%>&page=<%=paging.getCurrentPage()%>&keyword=<%=search.getKeyword()%>"><%=board.getBoardNo() %></a></td>-->
                 <td><%=board.getTitle()%></td>
                 <td><%=board.getWriter()%></td>
                 <td><%=board.getWriteDate()%></td>

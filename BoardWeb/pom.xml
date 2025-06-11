@@ -38,6 +38,33 @@
     <version>1.5.18</version>
     <scope>compile</scope>
 </dependency>
+<!--jstl 반복,조건 jsp기본태그로는안되서,새로라이브러리추가되면 메이븐 디펭 추가됨 자동으로추가가안되면 celan-install 후 maven update-->
+    <dependency>
+      <groupId>org.apache.taglibs</groupId>
+      <artifactId>taglibs-standard-spec</artifactId>
+      <version>1.2.5</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.taglibs</groupId>
+      <artifactId>taglibs-standard-impl</artifactId>
+      <version>1.2.5</version>
+    </dependency>
+    <!--apache tiles관련 1.라이브러리-->
+    <dependency>
+    <groupId>org.apache.tiles</groupId>
+    <artifactId>tiles-extras</artifactId>
+    <version>3.0.8</version>
+  </dependency>
+   <dependency>
+    <groupId>org.apache.tiles</groupId>
+    <artifactId>tiles-servlet</artifactId>
+    <version>3.0.8</version>
+  </dependency> 
+  <dependency>
+    <groupId>org.apache.tiles</groupId>
+    <artifactId>tiles-jsp</artifactId>
+    <version>3.0.8</version>
+  </dependency>  
   </dependencies>
 
   <build>

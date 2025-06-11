@@ -15,4 +15,23 @@
     and   password = #{pw}
 </select>
 
+<!-- 회원목록 -->
+<!-- ${}인 이유는-> 문자열을 구문에 직접 삽입,name,id가 String -->
+<!-- jtls처럼 choose-when-otherwise,member_name값넘겨줌, -->
+<select id="selectList" resultType="Member" parameterType="String">
+	select member_id
+	      ,member_name
+	      ,password
+	      ,responsibility
+    from  tbl_member
+    order by ${order}
+	<!--  <choose>
+		<when test="order == 'id'.toString()">
+			order by member_id
+		</when>
+		<otherwise>
+			order by member_name
+		</otherwise>
+	</choose>-->
+</select>
 </mapper>

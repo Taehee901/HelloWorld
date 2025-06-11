@@ -12,6 +12,7 @@ import com.yedam.control.BoardListControl;
 import com.yedam.control.LoginControl;
 import com.yedam.control.LoginFormControl;
 import com.yedam.control.LogoutControl;
+import com.yedam.control.MemberListControl;
 import com.yedam.control.ModifyBoardControl;
 import com.yedam.control.RemoveBoardControl;
 
@@ -52,6 +53,8 @@ public class FrontController extends HttpServlet{//HttpServlet를 상속받은 �
 		map.put("/login.do", new LoginControl());//id,pw 로그인처리(DB에 확인)기능
 		//로그아웃
 		map.put("/logout.do", new LogoutControl());
+		map.put("/memberList.do", new MemberListControl());
+		//회원목록.
 	}
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

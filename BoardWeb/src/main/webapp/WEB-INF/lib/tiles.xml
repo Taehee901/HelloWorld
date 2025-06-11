@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+<!--"body" value="/tiles/home_body.jsp"들어가야할 페이지를 내 페이지만큼증가 귀찮 wildcard 1 or n  -->
+  <definition name="myapp.homepage" template="/layouts/classic.jsp">
+    <put-attribute name="title" value="Tiles tutorial homepage" />
+    <put-attribute name="header" value="/tiles/banner.jsp" />
+    <put-attribute name="menu" value="/tiles/common_menu.jsp" />
+    <put-attribute name="body" value="/tiles/home_body.jsp" />
+    <put-attribute name="footer" value="/tiles/credits.jsp" />
+  </definition>
+  
+  <!-- 추가 definition 템플릿대신현재가져온템플릿을이용하겠다 "myapp.homepage"환경파일가져와서쓰는데,wildcard:*-* {1}-{2} 어떤페이지인지모르겠지만들어온url값을 .jsp파일로   여러개올수있는데 -->
+ <!-- 호출url패턴이 .jsp이름역할을하도록 설정,myapp.homepageclaus tiles밑.jsp파일구조가지고와서 vody영역에 내용을 첨부? -->
+  <definition name="WILDCARD:*" extends="myapp.homepage" >
+  	<put-attribute name="body" value="/tiles/{1}.jsp"></put-attribute>
+  </definition>
+  
+</tiles-definitions>

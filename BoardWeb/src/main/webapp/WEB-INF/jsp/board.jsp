@@ -11,7 +11,6 @@
 </head>
 page 내장객체에 이름이있어서 pg로 변경
 <body> -->
-    <jsp:include page="../include/header.jsp"></jsp:include>
     <!--꺽쇄에%값% 변수값읽어올때 -->
     <h3>상세화면(board.jsp)</h3>
     <form action="modifyForm.do">
@@ -67,7 +66,6 @@ page 내장객체에 이름이있어서 pg로 변경
             location.href = 'removeBoard.do?bno='+bno;
         })
     </script>
-<jsp:include page="../include/footer.jsp"></jsp:include>
 
 <!--     
 </body>

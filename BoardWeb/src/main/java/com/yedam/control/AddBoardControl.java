@@ -23,7 +23,7 @@ public class AddBoardControl implements Control {
 		if(req.getMethod().equals("GET")) {
 			//WEB-INF/jsp/addBoard.jsp ->실페이지는 addBpard.do
 			//getRequestDispatcher현재이페이지에서("")매개값페이지로재지정하겠습니다.,현재페이지는 add~ url값을 WEB-INF/jsp/addBoard.jsp(경로) -> frontcontrol가 제어하기위해 이리함
-			req.getRequestDispatcher("WEB-INF/jsp/addBoard.jsp").forward(req, resp);
+			req.getRequestDispatcher("user/addBoard.tiles").forward(req, resp);
 			//dispatcher없을시 addboard.do에 머물러있는상태,forward메소드가 실제페이지이동하게해줌
 		}else if(req.getMethod().equals("POST")) { //글 등록(한건 db)
 			//POST요청

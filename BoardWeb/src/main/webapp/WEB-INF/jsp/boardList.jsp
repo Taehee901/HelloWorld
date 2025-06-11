@@ -9,8 +9,8 @@
 <title>Insert title here</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
 </head>
-<body> -->
-<jsp:include page="../include/header.jsp"></jsp:include>
+<body>-->
+
     <!-- jsp의 내장객체 -->
     <!--Stirng msg = request.getAttribute("myName")Systme.out.println(msg)-->
    <!--import는 뒤에다가해야함-->
@@ -136,8 +136,8 @@
     
     
     
-	<jsp:include page="../include/footer.jsp"></jsp:include>
+	
 </body>
-<!-- include: 외부파일 포함 -->
+<!-- include: 외부파일 포함 ,포함되어있으면 겹겹-->
 <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script> -->
 </html>

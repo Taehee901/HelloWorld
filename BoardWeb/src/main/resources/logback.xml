@@ -7,11 +7,21 @@
       <pattern>%5level [%thread] - %msg%n</pattern>
     </encoder>
   </appender>
-<!-- 사용하는 mapper.interface넣어주면도ㅣㅁ ,trace많은내용보여줌-->
+<!-- 사용하는 mapper.interface넣어주면도ㅣㅁ ,trace많은내용보여줌
+	==
+	추가없이 이 경로에 있으면 알아서 로그출력
+	  <logger name="com.yedam.mapper">
+    	<level value="debug"/>
+  	 </logger>
+
+==-->
   <logger name="com.yedam.mapper.BoardMapper">
     <level value="debug"/>
   </logger>
     <logger name="com.yedam.mapper.MemberMapper">
+    <level value="debug"/>
+  </logger>
+    <logger name="com.yedam.mapper.ReplyMapper">
     <level value="debug"/>
   </logger>
   <root level="error">

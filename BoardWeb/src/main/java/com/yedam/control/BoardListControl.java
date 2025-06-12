@@ -7,6 +7,7 @@ import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.tomcat.util.buf.UEncoder;
 
@@ -67,9 +68,19 @@ public class BoardListControl implements Control{
 		//요청재지정(페이지이동),jsp에보내주면 화면보여주기만하면됌 실제결과 .jsp파일 실요청control.view
 		//한번요청하면연결끊어지는 http 특징을,ex)로그인 1번하고 끊기면 재로그인필요,서버에서갖다씀,세션은 로그아웃되기전 끊어지는데,특정시간 및 세션끊지않을경우 계속공유할방식,정보유지시간김
  		//user/~.tiles.호출이들어오면,web-app jsp파일열어서 body
-		req.getRequestDispatcher("user/boardList.tiles").forward(req, resp);
-		
-		
+		//일반사용자,관리자와 일반사용자나누는 atb추가
+		HttpSession session = req.getSession();
+		String auth = (String) session.getAttribute("auth");
+		if(auth != null && auth.equals("User")/*일반사용자*/) {	
+			req.getRequestDispatcher("user/boardList.tiles").forward(req, resp);
+		}
+		else if(auth != null && auth.equals("Admin")/*관리자*/) {
+			//관리자용 admin/board/
+			req.getRequestDispatcher("admin/board/boardList.tiles").forward(req, resp);
+		}		
+		else {//일반사용자 권한 (x)- null 처리x ->에러 발생
+			req.getRequestDispatcher("user/boardList.tiles").forward(req, resp);
+		}
 		//User전용
 //		req.getRequestDispatcher("WEB-INF/jsp/boardList.jsp").forward(req, resp);//없을 경우 out.print("<html>")방식으로 만들어줘야함
 	}

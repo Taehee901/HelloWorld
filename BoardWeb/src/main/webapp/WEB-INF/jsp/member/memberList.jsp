@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!-- 경로가 jsp-member -->
-<jsp:include page="../../include/aheader.jsp"/>
+
 <h3>회원목록</h3>
 <table class="table">
 	<!-- id,name기준으로 쿼리변경,컬럼명 -->
@@ -23,4 +23,3 @@
 	</tbody>
 </table>
 
-<jsp:include page="../../include/afooter.jsp"/>

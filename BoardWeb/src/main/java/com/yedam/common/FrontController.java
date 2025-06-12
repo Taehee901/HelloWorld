@@ -7,14 +7,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.yedam.control.AddBoardControl;
+import com.yedam.control.AddReplyControl;
+import com.yedam.control.AllControl;
 import com.yedam.control.BoardControl;
 import com.yedam.control.BoardListControl;
+import com.yedam.control.GetReplyControl;
 import com.yedam.control.LoginControl;
 import com.yedam.control.LoginFormControl;
 import com.yedam.control.LogoutControl;
 import com.yedam.control.MemberListControl;
 import com.yedam.control.ModifyBoardControl;
 import com.yedam.control.RemoveBoardControl;
+import com.yedam.control.RemoveReplyControl;
+import com.yedam.control.ReplyListControl;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -53,8 +58,16 @@ public class FrontController extends HttpServlet{//HttpServlet를 상속받은 �
 		map.put("/login.do", new LoginControl());//id,pw 로그인처리(DB에 확인)기능
 		//로그아웃
 		map.put("/logout.do", new LogoutControl());
-		map.put("/memberList.do", new MemberListControl());
 		//회원목록.
+		map.put("/memberList.do", new MemberListControl());
+		//상품관련.
+		map.put("/allProduct.do", new AllControl());
+		//댓글관련 - >기존에는 jsp파일을 열어주는게 마지막작업이었는데 이제는 jsp페이지x,json파일을 만들어주는걸로변경.=>06/12
+		//json파일생성(문자열)전달
+		map.put("/replyList.do", new ReplyListControl());
+		map.put("/addReply.do", new AddReplyControl());
+		map.put("/removeReply.do", new RemoveReplyControl());
+		map.put("/getReply.do",new GetReplyControl());
 	}
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

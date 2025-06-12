@@ -25,11 +25,11 @@
   </definition>
   <!-- http://localhost:8080/BoardWeb/user/boardList.tiles
   	   http://localhost:8080/BoardWeb/css/style.css,url기준페이지는,
-  
+   템플릿jsp찾아보면 아래와같이구성,url/.*tiles들어오면 template -menu,header,body,footer조합해서 엶
   
    -->
   <!-- url http://localhost:8080/BoardWeb/user/boardList.tiles -->
-    <!-- 관리자용.템플릿 같은폴더내 -->
+    <!-- 관리자용.템플릿 같은폴더내 o, 선언은했지만 지금은 body만씀.집에서해봐야함-->
   <definition name="admin" template="/WEB-INF/layout/template_a.jsp">
     <put-attribute name="title" value="Tiles tutorial homepage" />
     <put-attribute name="header" value="/WEB-INF/layout/header_a.jsp" />
@@ -39,8 +39,6 @@
   </definition>
   
   
-  
-  
   <!-- body 들어가는거 wildcard:*,title extends="user" 안바꿔서 에러나옴-->
   <!-- 여러개 첫번재 폴더이름,2열고자하는파일 "WILDCARD:*/*" tiles/{1}/{2}.jsp -->
   <!-- 어떤url오든 바디영역에 /tiles/sample.jsp파일을활용해서 보여줌 -->
@@ -48,6 +46,25 @@
  <!-- 호출url패턴이 .jsp이름역할을하도록 설정,myapp.homepageclaus tiles밑.jsp파일구조가지고와서 vody영역에 내용을 첨부? -->
   <definition name="WILDCARD:user/*" extends="user" >
   	<put-attribute name="body" value="/WEB-INF/jsp/{1}.jsp"></put-attribute>
+  </definition>
+  
+  <!-- user/~ -> url을 뭐하는기능인지확실하게알게만드는게낫다,폴더랑 url구조 적절하게 구현하는게 나음,만든경로에따른위치로url경로설정 -->
+  <!--관리자용 wildcard,admin이라는 템플릿쓰는데 body영역들어가는페이지만-->
+  <!-- extends,어드민용 템플릿가지고와서 wildcard:이름아무거나지만통일구분,member파일 하위.jsp -->
+    <definition name="WILDCARD:admin/*" extends="admin" >
+  	<put-attribute name="body" value="/WEB-INF/jsp/member/{1}.jsp"></put-attribute>
+  </definition>
+  <!-- 마지막은 대체로 2개를 이용,wildcard -->
+ 
+  <!-- board관련된건 해당위치에o -->
+   <definition name="WILDCARD:admin/board/*" extends="admin" >
+  	<put-attribute name="body" value="/WEB-INF/jsp/{1}.jsp"></put-attribute>
+  </definition>
+  
+   <!-- 마지막. 앞,jsp폴더찾고,productlist찾음,위 definition정의(url)x->x->product(파일폴더)-하위-productList.jsp찾음 -->
+   <!-- /기준으로  * 첫번째는 경로파일,* 두번째.jsp파일역할,user템플릿은 일반사용자용을사용 -->
+     <definition name="WILDCARD:*/*" extends="user" >
+  	<put-attribute name="body" value="/WEB-INF/jsp/{1}/{2}.jsp"></put-attribute>
   </definition>
   
 </tiles-definitions>

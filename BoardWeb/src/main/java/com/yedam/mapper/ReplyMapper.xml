@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <!-- 경로 . ,/다시공부 -->
+<mapper namespace="com.yedam.mapper.ReplyMapper">
+	<!--목록  resultType="Reply"-->
+	<select id="selectList" parameterType="int" >
+		select * 
+		from tbl_reply
+		where board_no = #{bno}
+	</select>
+	<!-- 단건조회 ;,오류 JDBC는 그것을 하나의 문장으로 인식하지 못하고 문법 오류(ORA-00933)-->
+	<select id="getReply" parameterType="int">
+		select * 
+		from tbl_reply
+		where reply_no = #{rno}
+	</select>
+	<!-- 추가 -->
+	<insert id="insertReply" parameterType="Reply">
+		insert into tbl_reply(reply_no,board_no,reply,replyer)
+		values(reply_seq.nextval,#{boardNo},#{reply},#{replyer})
+	</insert>
+	<!-- 삭제 -->
+	<delete id="delectReply" parameterType="int">
+		delete from tbl_reply
+		where reply_no = #{rno}
+	</delete>
+</mapper>

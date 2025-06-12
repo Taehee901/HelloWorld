@@ -30,8 +30,11 @@ public class LoginControl implements Control {
 			//세션객체에 setAttribute("logId",member.memberID)
 			//요청정보값읽어와서 쿠키~? 각브라우저마다 다른세션으로 인식,브라우저와서버 정보 비교해서 세션에 임의의값박아넣음,세션을 지우거나 자동사라지면 attrubyte다시 읽어와도 session값으로는 로그인 처리할수없구나 인식30기본 지나면 reset
 			//세션 어느객체에서든 접근가능
+			//cookie,어드민인지,일반사용자인지 구분
 			HttpSession session =  req.getSession();//서버 페이지요청 쿠키를 웹 페이지에 정보를 하나 심어둠
 			session.setAttribute("logId", member.getMemberId());//session은 일정시간이 지나거나 초기화 생명주기,request는 한번생성하고 보여주면 사라짐
+			session.setAttribute("auth", member.getResponsibility());
+			
 			//권한에 따라 시작페이지지정.
 			if(member.getResponsibility().equals("User")) {
 				resp.sendRedirect("addBoard.do");				

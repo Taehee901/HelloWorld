@@ -109,7 +109,7 @@
  } //end of deleteReplyFnc*/
  
  
- //이벤트등록관련부분부재
+ //이벤트등록관련부분부재,버튼클릭해도 아무반응x
  document.querySelector('#addReply').addEventListener('click',addReplyFnc);
  //등록 --해결필요
  function addReplyFnc(e){

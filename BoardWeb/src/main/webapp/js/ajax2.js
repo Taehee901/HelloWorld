@@ -30,7 +30,7 @@ function deleteReplyFnc(e){
 			}
 		},
 		function(err){
-			console.log(err);
+			console.log(err);//==err=>console.error(err)
 		}
 	)
 }

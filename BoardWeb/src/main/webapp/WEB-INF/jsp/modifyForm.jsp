@@ -1,6 +1,7 @@
 <%@page import="com.yedam.vo.BoardVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>    
 <jsp:include page="../include/header.jsp"></jsp:include>
 <h3>수정화면(modifyForm.jsp)</h3>
 <%
@@ -12,7 +13,7 @@
 <!-- 데이터변경하기위한처리 -->
 <form action="modifyForm.do" method="post">
 <!-- input타입이다 보니 value값전달 -->
-<input type="hidden" name="bno" value="<%=board.getBoardNo()%>">
+<input type="hidden" name="bno" value="${board.boardNo}<%=board.getBoardNo()%>">
 <input type="hidden" name="page" value="<%=pg%>">
 <input type="hidden" name="searchCondition" value="<%=sc%>">
 <input type="hidden" name="keyword" value="<%=kw%>">

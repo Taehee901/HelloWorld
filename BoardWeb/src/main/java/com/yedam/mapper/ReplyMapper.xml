@@ -9,6 +9,7 @@
 		select * 
 		from tbl_reply
 		where board_no = #{bno}
+		order by reply_no desc
 	</select>
 	<!-- 단건조회 ;,오류 JDBC는 그것을 하나의 문장으로 인식하지 못하고 문법 오류(ORA-00933)-->
 	<select id="getReply" parameterType="int">
@@ -18,8 +19,22 @@
 	</select>
 	<!-- 추가 -->
 	<insert id="insertReply" parameterType="Reply">
-		insert into tbl_reply(reply_no,board_no,reply,replyer)
-		values(reply_seq.nextval,#{boardNo},#{reply},#{replyer})
+	<!-- key값-->
+	<!-- dual  DUAL 테이블 오라클에서 제공하는 더미 테이블 -->
+	<!-- order  insert 기준으로 전에 추가될지 후에 추가될지 -->
+	<!--  keyProperty:???  selectKey구문의 결과가 셋팅될 대상을 지정 -->
+	<!-- selectKey 우선 입력한 값의 결과값을 다음 쿼리로 바로 return시켜줌.쿼리를 replyno,select값먼저넣어줌 ,,select reply_seq.nextval from dual ->replyNo-->
+	 	<selectKey keyProperty="replyNo" order="BEFORE" resultType="int">
+	 		select reply_seq.nextval from dual
+	 	</selectKey> 	
+		insert into tbl_reply(reply_no,
+							  board_no,
+							  reply,
+							  replyer)
+		values(#{replyNo},
+				#{boardNo},
+				#{reply},
+				#{replyer})
 	</insert>
 	<!-- 삭제 -->
 	<delete id="delectReply" parameterType="int">

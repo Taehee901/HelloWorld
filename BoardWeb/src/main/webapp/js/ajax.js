@@ -72,32 +72,114 @@ xhtp.open('get','replyList.do?bno=213');//요청할 페이지를 지정.,json'da
 xhtp.send();//실제 페이지 요청을 시작. 서버로부터 경로에있는 데이터를 요청시킴
 //xhtp.onload = memberList;
 xhtp.onload = function(){
+	
 	console.log(xhtp.responseText);
-	let data = JSON.parse(xhtp.responseText);//배열
+	let data = JSON.parse(xhtp.responseText);//배열//responseText,url값을 가지고와서json문자열->자바스크립트 jsp객체로파싱
+	//웹-결과빠리처리,캐쉬에이전페이지정보담아요청오면일단그냥보여줌,바뀌기전이나오는이유,강력새로고침.
+	console.log(data);
 	data.forEach(function(item){
-		console.log(item);
-		let tr = document.createElement('tr');//document영역에 tr요소를 만들어줌 = > <tr></tr>
-		//글번호,내용,작성자 ->반복,배열일경우 자바스크립트에 forof
-		//.연산자는 고정된 값만 들고옴
-		for(let prop of ['replyNo','reply','replyer']){
-			let td = document.createElement('td');//<td></td>
-			//item['replyNo']동적으로 값 할당가능,[]값을
-			td.innerHTML = item[prop]; //item['replyNo']=item.replyNo
-			tr.appendChild(td);//tr요소에td요소를자식으로붙임 => <tr><td>innerHTML</td></tr>			
-		}
-		//button생성.
-		let td = document.createElement('td');
-		let btn = document.createElement('button');
-		btn.innerHTML = '삭제';
-		btn.className = 'btn btn-danger';//자바스크립트에는 오브젝트.속성 => 복잡한페이지는다른방식으로만듦
-		td.appendChild(btn);
-		tr.appendChild(td);//앞 부모 뒤 자식 -부모자식관계만듦
+		//console.log(item);tr인 이유 변수사용하려고아래
+		let tr = makeRow(item);
+		//nth-of-type,몇번째요소를가리킬때
 		
-		document.querySelector('tbody').appendChild(tr);
+		//tr을 tbody에 추가(2),실제화면에다요소생성하는코드
+		document.querySelector('table:nth-of-type(2) tbody').appendChild(tr);
 	});
 	//document.querySelector('#show').innerHTML = xhtp.responseText;
 };
 
+//등록이벤트
+document.querySelector('#addReply').addEventListener('click',addReplyFnc);
+
+//댓글 등록 함수 $적용jspx
+function addReplyFnc(e){
+	const bno = document.querySelector('#bno').value;//input,value값,html면innerhtml
+	const reply = document.querySelector('#reply').value; //HTML 입력 요소의 값을 읽을때
+	//필수값입력.공백값은 f
+	if(!bno || !reply || !logId){
+		alert('필수값 입력!');
+		return;//아랫코드실행x
+	}
+	const addAjax = new XMLHttpRequest();//=fetch 비동기처리해주는거 같음,간편.프라미스??를가지고처리
+	addAjax.open('get','addReply.do?bno='+bno+'&reply='+reply+'&replyer='+logId);
+	addAjax.send();
+	addAjax.onload = function(ev){
+		console.log(addAjax);
+		let result = JSON.parse(addAjax.responseText);//비동기방식으로처리 ajax.parse-> json문자열 ->javascript,responseText처리값을담아줌,파싱대상을잘파악필요
+		console.log(result);
+		if(result.retCode == 'Success'){
+			alert('등록성공');
+			let tr = makeRow(result.retVal);//rvo
+			console.log(tr);
+			//appendChild->제일마지막위치에다가붙여줌(등록기준)
+			//역순
+			//부모요소.insertBefore(새요소,대상)->대상앞에 새요소넣어줌,querySelector선택자여러개있어도 첫번째거가져옴
+			let target = document.querySelector('table:nth-of-type(2) tbody tr');
+			//insertBefore 부모요소 안에서 새로운 요소를 대상의 바로 앞에 새로 추가(설명을잘못하겠다..)
+			document.querySelector('table:nth-of-type(2) tbody').insertBefore(tr,target);//rvo를 
+			//document.querySelector('table:nth-of-type(2) tbody').appendChild(tr);
+		}
+		else{
+			alert('등록실패');
+		}
+	}
+}
+//xml이용
+//댓글삭제 함수.e 이벤트핸들러는이벤트가매개값으로전달(이벤트발생하면실행할함수)
+function deleteReplyFnc(e){
+	//prompt 사용자값입력,confirm 확인 t
+	if(!confirm("삭제하시겠습니까?")){
+		return;
+	}
+	console.log(e);
+	//상위-상위-자식요소->tr속성에어튜르뷰트활용값담아서잉용(dataset어튜류뷰트에저장할때화면의요소들은 dataset정보담아서,실제현재요소의dataset값중 rno를반환)
+	//댓글번호파라미터전달,ajax호출xdb삭제x
+	let rno = e.target.parentElement.parentElement.dataset.rno;//tr -rno
+	console.log(rno);
+	const delAjax = new XMLHttpRequest();
+	delAjax.open('get','removeReply.do?rno='+rno);//페이지지정(요청)
+	delAjax.send();//실서버에데이터요청,result.retCode
+	delAjax.onload = function(ev){//function e아닌 중복된변수이름이라 onload쪽을인식 에러발생
+		let result = JSON.parse(delAjax.responseText);//처리결과담김,succes..json문자열
+		if(result.retCode == 'Success'){
+			e.target.parentElement.parentElement.remove();//화면처리.			
+		}else{
+			alert('처리실패');
+		}
+		
+	};//처리데이터불러왔을때,on속성은 이벤트관련속성 - function이용시 이벤트핸들러
+}//end of deleteReplyFnc.
+
+//댓글을 화면에출력하는
+//댓글을 row생성.,item이름바뀌면 item부분변경
+function makeRow(item){
+	let tr = document.createElement('tr');//document영역에 tr요소를 만들어줌 = > <tr></tr>
+			tr.setAttribute('data-rno',item.replyNo);//<tr data-rno="item.replyNo"></tr>
+			//글번호,내용,작성자 ->반복,배열일경우 자바스크립트에 forof
+			//.연산자는 고정된 값만 들고옴
+			for(let prop of ['replyNo','reply','replyer']){
+				let td = document.createElement('td');//<td></td>
+				//item['replyNo']동적으로 값 할당가능,[]값을
+				td.innerHTML = item[prop]; //item['replyNo']=item.replyNo
+				tr.appendChild(td);//tr요소에td요소를자식으로붙임 => <tr><td>innerHTML</td></tr>			
+			}
+			//button생성.
+			let td = document.createElement('td');
+			let btn = document.createElement('button');//이벤트리스너,핸들링
+			//tr.remove
+			btn.addEventListener('click',deleteReplyFnc);//function외부에해도되고,안에해도됨,tr에직접remove가능하지만,외부에서는불가
+			
+			btn.innerHTML = '삭제';//라벨
+			btn.className = 'btn btn-danger';//자바스크립트에는 오브젝트.속성 => 복잡한페이지는다른방식으로만듦
+			td.appendChild(btn);
+			tr.appendChild(td);//앞 부모 뒤 자식 -부모자식관계만듦
+			return tr;//makeRow를 호출한 영역으로 tr 반환.
+}//end of makeRow
+
+
+
+
+//목록
 function memberList(){//3,//함수,이름x 익명함수function()
 	//console.log("1");
 	//console.log(xhtp.responseText);//xthp에들어갈속성출력,responseText(json문자열출력),parsing
@@ -121,7 +203,7 @@ function memberList(){//3,//함수,이름x 익명함수function()
 //출력요청끝,작업끝날대까지기다리지x 그다음코드를진행시킴= 비동기방식으로처리
 console.log("end");   //2
 
-
+//ajax 핸들러,같은페이지삭제
 
 //1끝나야 다음번호가 2번이 실행 =>동기 방식
 //작업끝나는거기다려야함.(1번끝-2번)

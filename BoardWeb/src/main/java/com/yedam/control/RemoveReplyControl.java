@@ -15,8 +15,8 @@ public class RemoveReplyControl implements Control {
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// 댓글삭제. rno필요
-		String rno = req.getParameter("rno");
-		
+		String rno = req.getParameter("rno");//데이터한건전달
+		//http://localhost:8080/BoardWeb/removeReply.do?rno=10(06/12)
 		//DB입력처리.
 		ReplyService svc = new ReplyServiceImpl();
 		//DB 한건입력,매개값으로 전달되어야함

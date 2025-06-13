@@ -34,7 +34,8 @@ public class ReplyServiceImpl implements ReplyService {
 		// TODO Auto-generated method stub
 		return repl.getReply(rno);
 	}
-
+	
+	//댓글삭제
 	@Override
 	public boolean removeReply(int rno) {
 		// TODO Auto-generated method stub

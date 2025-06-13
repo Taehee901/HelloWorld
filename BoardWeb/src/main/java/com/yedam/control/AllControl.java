@@ -13,7 +13,7 @@ public class AllControl implements Control {
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		//tiles라는 url호출,관련환경찾음->tiles.xml
+		//tiles라는 url호출,관련환경찾음->tiles.xml,wildcard */*
 		req.getRequestDispatcher("product/productList.tiles").forward(req, resp);
 	}
 

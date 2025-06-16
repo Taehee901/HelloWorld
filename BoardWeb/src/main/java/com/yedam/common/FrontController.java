@@ -19,6 +19,7 @@ import com.yedam.control.MemberListControl;
 import com.yedam.control.ModifyBoardControl;
 import com.yedam.control.RemoveBoardControl;
 import com.yedam.control.RemoveReplyControl;
+import com.yedam.control.ReplyCountControl;
 import com.yedam.control.ReplyListControl;
 
 import java.io.IOException;
@@ -68,6 +69,7 @@ public class FrontController extends HttpServlet{//HttpServlet를 상속받은 �
 		map.put("/addReply.do", new AddReplyControl());
 		map.put("/removeReply.do", new RemoveReplyControl());
 		map.put("/getReply.do",new GetReplyControl());
+		map.put("/replyCount.do", new ReplyCountControl());
 	}
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

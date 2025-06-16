@@ -1,6 +1,7 @@
 package com.yedam.control;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -30,6 +31,7 @@ public class AddReplyControl implements Control {
 		rvo.setBoardNo(Integer.parseInt(bno));
 		rvo.setReply(reply);
 		rvo.setReplyer(replyer);
+		rvo.setReplyDate(new Date());
 		//json문자열 생성 함수
 		Map<String,Object> map = new HashMap<>();
 		//코드가무슨값으로되어잇는지확인필요

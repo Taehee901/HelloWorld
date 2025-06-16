@@ -7,7 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import com.yedam.common.DataSource;
 import com.yedam.mapper.ReplyMapper;
 import com.yedam.vo.ReplyVO;
-
+//구현클래스,service추상클래스
 public class ReplyServiceImpl implements ReplyService {
 
 	SqlSession sqlsession = DataSource.getInstance().openSession();
@@ -24,9 +24,9 @@ public class ReplyServiceImpl implements ReplyService {
 	}
 
 	@Override
-	public List<ReplyVO> replyList(int bno) {
+	public List<ReplyVO> replyList(int bno,int page) {
 		// TODO Auto-generated method stub
-		return repl.selectList(bno);
+		return repl.selectList(bno,page);
 	}
 
 	@Override
@@ -45,6 +45,11 @@ public class ReplyServiceImpl implements ReplyService {
 			return true;
 		}
 		return false;
+	}
+
+	@Override
+	public int totalCount(int bno) {
+		return repl.selectTotal(bno);
 	}
 
 

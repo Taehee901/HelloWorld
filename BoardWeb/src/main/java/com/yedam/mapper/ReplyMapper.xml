@@ -6,11 +6,27 @@
 <mapper namespace="com.yedam.mapper.ReplyMapper">
 	<!--목록  resultType="Reply"-->
 	<select id="selectList" parameterType="int" >
-		select * 
+		<!-- select * 
 		from tbl_reply
 		where board_no = #{bno}
-		order by reply_no desc
+		order by reply_no desc-->
+		select a.*
+		from   (select /*+INDEX_DESC(r pk_reply) */rownum rn, r.*
+		        from tbl_reply r
+		        where board_no = #{bno}) a
+		where a.rn >(#{page} -1) * 5
+		<![CDATA[
+		and   a.rn <= (#{page} *5)
+		]]>
 	</select>
+	
+	<!-- 댓글건수 -->
+	<select id="selectTotal" parameterType="int" resultType="int">
+		select count(1)
+		from tbl_reply
+		where board_no = #{bno}
+	</select>
+	<!-- 조회 select -->
 	<!-- 단건조회 ;,오류 JDBC는 그것을 하나의 문장으로 인식하지 못하고 문법 오류(ORA-00933)-->
 	<select id="getReply" parameterType="int">
 		select * 

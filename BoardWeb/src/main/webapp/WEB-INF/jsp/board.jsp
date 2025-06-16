@@ -59,14 +59,67 @@ page 내장객체에 이름이있어서 pg로 변경
        	</c:choose>
     </table>
     </form>
+    <!-- 댓글관련 페이지 -->
+    <style>
+      div.reply ul {
+      	list-style-type:none;
+      }
+      div.reply span{
+      	display:inline-block;
+      }
+    </style>
+    <div class="container reply">
+       <div class = "header">
+         <input class="col-sm-8" id="reply">
+         <button class="col-sm-3 btn btn-primary" id="addReply">등록</button>
+       </div>
+       <!-- 댓글목록 -->
+       <div class="content">
+       <!-- 타이틀 -->
+       	<ul id="title">
+       	  <li>
+       	  	<span class="col-sm-2">글번호</span>
+       	  	<span class="col-sm-4">글내용</span>
+       	  	<span class="col-sm-2">작성자</span>
+       	  	<span class="col-sm-2">작성일시</span><!-- 3,title -->
+       	  	<span class="col-sm-1">삭제</span>
+       	  </li>
+       	</ul>
+       	<!-- 목록 -->
+       	<ul id="target"></ul>
+       </div>
+       <!-- 댓글 페이징.sm작게,lg크게-->
+       <div class="footer">
+       <nav aria-label="...">
+		  <ul class="pagination pagination-sm">
+		    <li class="page-item disabled">
+		      <span class="page-link">Previous</span>
+		    </li> <!-- 이전페이지의 여부 -->
+		    
+		    <li class="page-item"><a class="page-link" href="#">1</a></li>
+		    <li class="page-item active" aria-current="page">
+		      <span class="page-link">2</span>
+		    </li>
+		    <li class="page-item"><a class="page-link" href="#">3</a></li>
+		    <li class="page-item">
+		      <a class="page-link" href="#">Next</a>
+		    </li><!-- 이후 페이지 --> 
+		  </ul>
+		</nav>
+		<!-- 댓글페이징 end. -->
+       </div>
+    </div>
+    <!-- 댓글관련 페이지 -->
     <script>
         let bno = "${board.boardNo }";
+        let logId = "${logId}";//댓글작성자
         console.log(bno);
         document.querySelector('button.btn-danger').addEventListener('click',function(){
             location.href = 'removeBoard.do?bno='+bno;
         })
     </script>
-
+    <script src="js/service.js"></script>
+    <script src="js/reply.js"></script>
 <!--     
 </body>
 </html> -->

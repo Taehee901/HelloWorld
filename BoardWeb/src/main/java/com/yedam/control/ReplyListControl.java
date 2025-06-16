@@ -25,6 +25,7 @@ public class ReplyListControl implements Control {
 		resp.setContentType("text/json;charset=utf-8");
 		
 		String bno = req.getParameter("bno");//게시글번호알려주면댓글번호,파라미터로 
+		String page = req.getParameter("page");
 //		ReplyVO reply = new ReplyVO();
 //		reply.setBoardNo(221);
 //		reply.setReply("댓글내용");
@@ -33,7 +34,7 @@ public class ReplyListControl implements Control {
 		//여러건가져오는 
 		
 		ReplyService svc = new ReplyServiceImpl();
-		List<ReplyVO> list = svc.replyList(Integer.parseInt(bno));//파라미터를통해받음
+		List<ReplyVO> list = svc.replyList(Integer.parseInt(bno),Integer.parseInt(page));//파라미터를통해받음
 		
 		//GsonBuilder gson객체 받아옴, tojson reply(ReplyVO)자바객체를 json문자열로바꾸어줌
 		

@@ -13,12 +13,13 @@ const svc ={//오브젝트안에소속,메소드
 	},
 		//replyList:function(bno){
 	//목록출력메소드.
-	replyList(bno,successCallback,errorCallback){//파라미터 원본글정보 , 정상실행함수매개값으로전달,예외처리
+	replyList(param = {bno,page},successCallback,errorCallback){//파라미터 원본글정보 , 정상실행함수매개값으로전달,예외처리
 		//ajax호출
-		fetch('replyList.do?bno='+bno)
+		fetch('replyList.do?bno='+param.bno +'&page='+param.page)
 			.then(data => data.json())//data매개변수이름.json()파싱
 			.then(successCallback)//어떤값이 들어올지 모르나 들어오는함수로 전달받아서 반환
 			.catch(errorCallback)
+			console.log(bno,page);
 		},
 	//댓글삭제메소드
 	removeReply(rno,successCallback,errorCallback){
@@ -40,6 +41,14 @@ const svc ={//오브젝트안에소속,메소드
 			.then(data => data.json())
 			.then(successCallback)
 			.catch(errorCallback)
+	},
+	//댓글전체건수.
+	replyCount(bno,successCallback,errorCallback){
+		//ajax호출
+		fetch('replyCount.do?bno='+bno)
+		.then(data => data.json())
+		.then(successCallback)
+		.catch(errorCallback)
 	}
 	
 }

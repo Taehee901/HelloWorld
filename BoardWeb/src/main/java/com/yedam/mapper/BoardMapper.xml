@@ -136,4 +136,30 @@ and    b.rn >= 5;
   	where  board_no = #{boardNo}
   </delete>
 <!-- set 값이 있으면 적절한거 넣어줌,없던말던 set에 넣어주면알아서처리 -->
+
+<select id="selectEvent" resultType="Event">
+	select *
+	from   tbl_events
+</select>
+<!-- event 추가 -->
+<insert id="insertEvent" parameterType="Event">
+	insert into tbl_events(title,e_start,e_end)
+	values(#{title},#{eStart},#{eEnd})
+</insert>
+
+<delete id="deleteEvent" parameterType="Event">
+	delete from tbl_events
+	where  title = #{title}
+</delete>
+
+<!-- id= 메소드이름-->
+<select id="selectUserByCount" resultType="Map">
+	select writer as "writer", 
+	member_name as "memberName",
+	count(1) as "cnt"
+	from tbl_board b
+	join tbl_member m
+	on b.writer = m.member_id
+	group by writer,member_name
+</select>
 </mapper>

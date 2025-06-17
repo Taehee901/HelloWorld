@@ -7,10 +7,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.yedam.control.AddBoardControl;
+import com.yedam.control.AddEventControl;
 import com.yedam.control.AddReplyControl;
 import com.yedam.control.AllControl;
 import com.yedam.control.BoardControl;
 import com.yedam.control.BoardListControl;
+import com.yedam.control.ChartControl;
+import com.yedam.control.ChartPageControl;
+import com.yedam.control.EventListControl;
 import com.yedam.control.GetReplyControl;
 import com.yedam.control.LoginControl;
 import com.yedam.control.LoginFormControl;
@@ -18,6 +22,7 @@ import com.yedam.control.LogoutControl;
 import com.yedam.control.MemberListControl;
 import com.yedam.control.ModifyBoardControl;
 import com.yedam.control.RemoveBoardControl;
+import com.yedam.control.RemoveEventControl;
 import com.yedam.control.RemoveReplyControl;
 import com.yedam.control.ReplyCountControl;
 import com.yedam.control.ReplyListControl;
@@ -54,6 +59,10 @@ public class FrontController extends HttpServlet{//HttpServlet를 상속받은 �
 		map.put("/modifyForm.do", new ModifyBoardControl());
 		//흐름파악 url-실행컨트롤
 		map.put("/removeBoard.do", new RemoveBoardControl());
+		//json데이터가지고오기위한url
+		map.put("/chart.do",new ChartControl());
+		//jsp페이지엶
+		map.put("/chartpage.do", new ChartPageControl());
 		//member관련,두개의 파일에 get,post분리
 		map.put("/loginForm.do", new LoginFormControl());//로그인 화면.
 		map.put("/login.do", new LoginControl());//id,pw 로그인처리(DB에 확인)기능
@@ -70,6 +79,10 @@ public class FrontController extends HttpServlet{//HttpServlet를 상속받은 �
 		map.put("/removeReply.do", new RemoveReplyControl());
 		map.put("/getReply.do",new GetReplyControl());
 		map.put("/replyCount.do", new ReplyCountControl());
+		map.put("/eventList.do", new EventListControl());
+		map.put("/addEvnet.do", new AddEventControl());
+		map.put("/removeEvent.do", new RemoveEventControl());
+	
 	}
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

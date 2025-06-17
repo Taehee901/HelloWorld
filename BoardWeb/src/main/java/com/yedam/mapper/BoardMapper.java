@@ -1,9 +1,11 @@
 package com.yedam.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import com.yedam.common.SearchDTO;
 import com.yedam.vo.BoardVO;
+import com.yedam.vo.EventVO;
 
 //import com.yedam.vo.BoardVO;
 
@@ -22,4 +24,11 @@ public interface BoardMapper {
 	//전체건수.
 //	public int selectCount();
 	public int selectCount(SearchDTO search);//sqp 쿼리에서 int이기에 int타입씀
+	public List<Map> selectUserByCount();//key,value
+	
+	//event
+	public List<EventVO> selectEvent();
+	public int insertEvent(EventVO title);
+	public int deleteEvent(EventVO title);
+	
 }

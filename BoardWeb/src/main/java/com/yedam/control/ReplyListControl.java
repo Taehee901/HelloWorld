@@ -2,7 +2,9 @@ package com.yedam.control;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -26,6 +28,7 @@ public class ReplyListControl implements Control {
 		
 		String bno = req.getParameter("bno");//게시글번호알려주면댓글번호,파라미터로 
 		String page = req.getParameter("page");
+		page="1";//null에러 방지
 //		ReplyVO reply = new ReplyVO();
 //		reply.setBoardNo(221);
 //		reply.setReply("댓글내용");
@@ -34,13 +37,19 @@ public class ReplyListControl implements Control {
 		//여러건가져오는 
 		
 		ReplyService svc = new ReplyServiceImpl();
-		List<ReplyVO> list = svc.replyList(Integer.parseInt(bno),Integer.parseInt(page));//파라미터를통해받음
+		//List<ReplyVO> list = svc.replyList(Integer.parseInt(bno),Integer.parseInt(page));//파라미터를통해받음
+		List<ReplyVO> list = svc.replyList(Integer.parseInt(bno),Integer.parseInt(page));
+		//데이터안에 리스트 넣음
+		//DataTable용.
+		Map<String, Object> map = new HashMap<>();
+		map.put("data", list);
 		
 		//GsonBuilder gson객체 받아옴, tojson reply(ReplyVO)자바객체를 json문자열로바꾸어줌
 		
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 //		String json = gson.toJson(reply);
-		String json = gson.toJson(list);
+		//String json = gson.toJson(list);
+		String json = gson.toJson(map);
 		System.out.println(json);
 		
 		PrintWriter out = resp.getWriter();

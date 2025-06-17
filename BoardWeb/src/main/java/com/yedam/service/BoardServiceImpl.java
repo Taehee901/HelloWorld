@@ -1,6 +1,7 @@
 package com.yedam.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -8,17 +9,18 @@ import com.yedam.common.DataSource;
 import com.yedam.common.SearchDTO;
 import com.yedam.mapper.BoardMapper;
 import com.yedam.vo.BoardVO;
+import com.yedam.vo.EventVO;
 
 public class BoardServiceImpl implements BoardService{
 	SqlSession sqlSession = DataSource.getInstance().openSession();
 	//데이터베이스처리기능 mapper담김
 	BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
-	
 	@Override
 	public List<BoardVO> boardList(SearchDTO search) {
 		// TODO Auto-generated method stub
 //		return mapper.selectList();
-		return mapper.selectListWithPaging(search);
+		//return mapper.selectListWithPaging(search);
+		return mapper.selectList();//전체건수로 페이징나눠
 	}
 
 	@Override
@@ -67,6 +69,39 @@ public class BoardServiceImpl implements BoardService{
 	public int getTotalCount(SearchDTO search) {
 		return mapper.selectCount(search);
 	}
+
+	@Override
+	public List<Map> chartCount() {
+		// TODO Auto-generated method stub
+		return mapper.selectUserByCount();
+	}
+
+	@Override
+	public List<EventVO> eventList(String e) {
+		// TODO Auto-generated method stub
+		return mapper.selectEvent();
+	}
+
+	@Override
+	public boolean addEvent(EventVO evo) {
+		// TODO Auto-generated method stub
+		int r = mapper.insertEvent(evo);
+		if(r == 1) {
+			return true;
+		}
+		return false;
+	}
+
+	@Override
+	public boolean removeEvent(EventVO evo) {
+		// TODO Auto-generated method stub
+		int r = mapper.deleteEvent(evo);
+		if(r == 1) {
+			return true;
+		}
+		return false;
+	}
+
 
 
 }

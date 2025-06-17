@@ -39,7 +39,7 @@ public class AddReplyControl implements Control {
 		//DB입력처리.
 		ReplyService svc = new ReplyServiceImpl();
 		//DB 한건입력,매개값으로 전달되어야함
-		if(svc.addReply(rvo)) {
+		if(svc.addReply(rvo)) {//dbinsert
 			//{"retCode": "Success"},json문자열
 			//resp.getWriter().print("{\"retCode\": \"Success\"}");
 			map.put("retVal", rvo);

@@ -8,6 +8,7 @@
 </settings>
   <typeAliases>
   <!--  -->
+  	<typeAlias alias="Event" type="com.yedam.vo.EventVO"/>
   	<typeAlias alias="Reply" type="com.yedam.vo.ReplyVO"/>
   	<typeAlias alias="Search" type="com.yedam.common.SearchDTO"/>
   	<typeAlias alias="Member" type= "com.yedam.vo.MemberVO"/>

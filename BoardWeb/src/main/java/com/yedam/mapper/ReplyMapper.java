@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.yedam.vo.EventVO;
 import com.yedam.vo.ReplyVO;
 
 //update,insert,delete 
@@ -14,4 +15,5 @@ public interface ReplyMapper {
 	public int delectReply(int rno);
 	public List<ReplyVO> selectList(@Param("bno") int bno,@Param("page")int page); 
 	public int selectTotal(int bno);
+
 }

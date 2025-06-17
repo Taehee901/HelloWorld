@@ -1,9 +1,11 @@
 package com.yedam.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.yedam.common.SearchDTO;
 import com.yedam.vo.BoardVO;
+import com.yedam.vo.EventVO;
 
 /*
  * 규칙,서비스를통해메소드호출하게하려고,나중에 db나 뭐 변경할 시,메소드이름 동일하게하기위해서
@@ -20,4 +22,9 @@ public interface BoardService {
 	// 전체카운트 계산.
 //	public int getTotalCount();
 	public int getTotalCount(SearchDTO search);//매퍼쪽:selectCount()
+	public List<Map> chartCount();
+	//tbl_event
+	public List<EventVO> eventList(String e);
+	public boolean addEvent(EventVO evo);
+	public boolean removeEvent(EventVO evo);
 }

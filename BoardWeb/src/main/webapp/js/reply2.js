@@ -20,21 +20,26 @@ Date.prototype.format = function() {
 showReplyList();
 function showReplyList() {
 	document.querySelector('#target').innerHTML = ""; // 목록지우기.
-	svc.replyList({ bno, page } //게시글번호
-		, result => {
-			let ul = document.querySelector('#target');
-			let template = document.querySelector('#target li');
-			console.log(result);
-			for (let reply of result) {
-				template = makeTemplate(reply);
-				//
-				ul.insertAdjacentHTML("beforeend", template);
+	// 건수체크해서 마지막 페이지가 맞는지 확인하기.
+	svc.replyCount(bno, (result) => {
+		console.log(result);
+		let lastPage = Math.ceil(result.totalCnt / 5);
+		page = page > lastPage ? lastPage : page; // 현재마지막 페이지 계산하기.
+		// 바뀐페이지로 목록출력하기.
+		svc.replyList({ bno, page } //게시글번호
+			, result => {
+				let ul = document.querySelector('#target');
+				let template = document.querySelector('#target li');
+				for (let reply of result) {
+					template = makeTemplate(reply);
+					ul.insertAdjacentHTML("beforeend", template);
+				}
+				// 댓글페이지.
+				showPageList();
 			}
-			// 댓글페이지.
-			showPageList();
-		}
-		, err => console.log(err)
-	);
+			, err => console.log(err)
+		);
+	}, (err) => { console.log(err) })
 } // end of showReplyList.
 // 이벤트.
 // 1)댓글등록이벤트.
@@ -48,6 +53,10 @@ function pagingEvent() {
 			showReplyList();
 		})
 	});
+	document.querySelectorAll('#target li').forEach(elem => {
+		elem.addEventListener('mouseover', () => { elem.style.background = 'beige' });
+		elem.addEventListener('mouseout', () => { elem.style.background = '' });
+	})
 } // end of pagingEvent.
 // 댓글등록이벤트핸들러.
 function addReplyHandler(e) {
@@ -143,23 +152,27 @@ function makeTemplate(reply = {}) {
 	`;
 	return template; // <li>...</li> 반환.
 }
-// 댓글삭제함수.,
-function deleteReply(e) {
+// 댓글삭제함수.
+async function deleteReply(e) {
 	let rno = e.target.parentElement.parentElement.dataset.rno;
-	let writer = e.target.parentElement.parentElement.dataset.replayer;
+	let data = await fetch('replyInfo.do?rno=' + rno);
+	let result = await data.json();
+	if (result.replyer != logId) {
+		alert('권한없음!');
+		return;
+	}
+	// 권한이 있을 경우에 삭제함.
 	svc.removeReply(rno
 		, result => {
-			if(logId == writer){
-				if (result.retCode == "Success") {
-					alert("처리성공!");
-					//e.target.parentElement.parentElement.remove();
-					showReplyList();
-				} else {
-					alert("처리실패!");
-				}
+			if (result.retCode == "Success") {
+				alert("처리성공!");
+				//e.target.parentElement.parentElement.remove();
+				showReplyList();
+			} else {
+				alert("처리실패!");
 			}
-			
 		}
 		, err => console.log(err)
-	)
+	);// 삭제메소드.
+
 } // end of deleteReply.

@@ -77,7 +77,7 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
-	public List<EventVO> eventList(String e) {
+	public List<Map<String,String>> eventList() {
 		// TODO Auto-generated method stub
 		return mapper.selectEvent();
 	}
@@ -93,9 +93,9 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
-	public boolean removeEvent(EventVO evo) {
+	public boolean removeEvent(Map<String, String> map) {
 		// TODO Auto-generated method stub
-		int r = mapper.deleteEvent(evo);
+		int r = mapper.deleteEvent(map);
 		if(r == 1) {
 			return true;
 		}

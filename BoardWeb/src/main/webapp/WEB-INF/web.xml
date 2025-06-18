@@ -7,7 +7,22 @@
     <listener-class>org.apache.tiles.extras.complete.CompleteAutoloadTilesListener</listener-class>
 </listener>
   
-  <!-- tiles 서블릿. -->
+  
+  <!-- 필터,urel패턴-->
+  <filter>
+  	<filter-name>log</filter-name>
+  	<filter-class>com.yedam.common.LogFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>log</filter-name>
+  	<!-- /addBoard.serv에만 적용 	<url-pattern>/addBoard.serv</url-pattern>,선입선출-->
+  	<url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
+  
+  
+  
+  <!-- tiles 서블릿.-->
   <servlet>
     <servlet-name>Tiles Dispatch Servlet</servlet-name>
     <servlet-class>org.apache.tiles.web.util.TilesDispatchServlet</servlet-class>
@@ -16,9 +31,7 @@
 	 <servlet-name>Tiles Dispatch Servlet</servlet-name>
 	 <url-pattern>*.tiles</url-pattern>
 	</servlet-mapping>
-	  
-  
-  
+
   <!-- 
     <servlet>
   	<servlet-name>addServlet</servlet-name>

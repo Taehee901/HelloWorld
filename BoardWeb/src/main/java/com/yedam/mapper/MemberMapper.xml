@@ -34,4 +34,22 @@
 		</otherwise>
 	</choose>-->
 </select>
+	
+	<!-- 회원추가 파라미터    //order by ${order}-->
+	<insert id="insertMember" parameterType="Member">
+		insert into tbl_member(member_id,member_name,password,img)
+		values(#{memberId},#{memberName},#{password},#{img})
+	</insert>
+	
+	<!-- 회원 조회 ,resultType반환타입-->
+	<select id="selectMemberInfo" resultType="Member" parameterType="String">
+		select member_id
+	      ,member_name
+	      ,password
+	      ,responsibility
+	      ,img
+    from  tbl_member
+    where member_id = #{id}
+	</select>
+	
 </mapper>

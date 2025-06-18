@@ -5,6 +5,8 @@
 <configuration>
 <settings>
 	<setting name="mapUnderscoreToCamelCase" value="true"/>
+	<!-- 1.셋팅 2.db if=null처리 -->
+	<setting name="jdbcTypeForNull" value="NULL"/>
 </settings>
   <typeAliases>
   <!--  -->

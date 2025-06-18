@@ -24,7 +24,8 @@ public interface BoardService {
 	public int getTotalCount(SearchDTO search);//매퍼쪽:selectCount()
 	public List<Map> chartCount();
 	//tbl_event
-	public List<EventVO> eventList(String e);
+	public List<Map<String,String>>eventList();
 	public boolean addEvent(EventVO evo);
-	public boolean removeEvent(EventVO evo);
+	public boolean removeEvent(Map<String, String> map);
+	//public boolean removeEvent(EventVO evo);
 }

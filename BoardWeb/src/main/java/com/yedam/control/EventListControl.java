@@ -22,12 +22,12 @@ public class EventListControl implements Control {
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String title = req.getParameter("title");
+		req.getParameter("title");
 		//String start = req.getParameter("eStart");
 		BoardService svc = new BoardServiceImpl();
-		List<EventVO> list = svc.eventList(title);
-		Map<String,Object> map = new HashMap<>();
-		map.put("data", list);
+		//List<EventVO> list = svc.eventList(title);
+		List <Map<String,String>> map = svc.eventList();
+		//map.put("data", list);
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 		String json = gson.toJson(map);
 		System.out.println(json);

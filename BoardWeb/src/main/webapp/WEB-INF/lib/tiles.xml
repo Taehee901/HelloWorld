@@ -63,7 +63,7 @@
   
    <!-- 마지막. 앞,jsp폴더찾고,productlist찾음,위 definition정의(url)x->x->product(파일폴더)-하위-productList.jsp찾음 -->
    <!-- /기준으로  * 첫번째는 경로파일,* 두번째.jsp파일역할,user템플릿은 일반사용자용을사용 -->
-     <definition name="WILDCARD:*/*" extends="user" >
+   <definition name="WILDCARD:*/*" extends="user" >
   	<put-attribute name="body" value="/WEB-INF/jsp/{1}/{2}.jsp"></put-attribute>
   </definition>
   

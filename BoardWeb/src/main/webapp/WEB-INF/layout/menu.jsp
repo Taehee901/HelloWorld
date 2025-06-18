@@ -7,7 +7,7 @@
 		Bootstrap</div>
 	<div class="list-group list-group-flush">
 		<a class="list-group-item list-group-item-action list-group-item-light p-3"
-			href="boardList.do">글목록</a>
+			href="boardList.do">글목록(datatab;e)</a>
 		 <a class="list-group-item list-group-item-action list-group-item-light p-3"
 			href="addBoard.do">글등록화면</a>
 		<!--  if.. else,JTLS -->
@@ -26,8 +26,10 @@
 		<a class="list-group-item list-group-item-action list-group-item-light p-3"
 			href="allProduct.do">자바스크립트</a> 
  		<a class="list-group-item list-group-item-action list-group-item-light p-3"
-			href="#!">Profile</a> 
+			href="chartpage.do">chart</a> 
 		<a class="list-group-item list-group-item-action list-group-item-light p-3"
-			href="#!">Status</a>
+			href="selectable.html">FullCalendar</a>
+		<a class="list-group-item list-group-item-action list-group-item-light p-3"
+			href="signup.do">회원가입</a>	
 	</div>
 </div>

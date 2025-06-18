@@ -34,6 +34,7 @@ public class LoginControl implements Control {
 			HttpSession session =  req.getSession();//서버 페이지요청 쿠키를 웹 페이지에 정보를 하나 심어둠
 			session.setAttribute("logId", member.getMemberId());//session은 일정시간이 지나거나 초기화 생명주기,request는 한번생성하고 보여주면 사라짐
 			session.setAttribute("auth", member.getResponsibility());
+			session.setAttribute("img", member.getImg());
 			
 			//권한에 따라 시작페이지지정.
 			if(member.getResponsibility().equals("User")) {

@@ -14,6 +14,7 @@ import com.yedam.control.BoardControl;
 import com.yedam.control.BoardListControl;
 import com.yedam.control.ChartControl;
 import com.yedam.control.ChartPageControl;
+import com.yedam.control.CheckControl;
 import com.yedam.control.EventListControl;
 import com.yedam.control.GetReplyControl;
 import com.yedam.control.LoginControl;
@@ -26,6 +27,7 @@ import com.yedam.control.RemoveEventControl;
 import com.yedam.control.RemoveReplyControl;
 import com.yedam.control.ReplyCountControl;
 import com.yedam.control.ReplyListControl;
+import com.yedam.control.SignUpControl;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -69,6 +71,8 @@ public class FrontController extends HttpServlet{//HttpServlet를 상속받은 �
 		//로그아웃
 		map.put("/logout.do", new LogoutControl());
 		//회원목록.
+		map.put("/signup.do", new SignUpControl());
+		map.put("/checkId.do", new CheckControl());
 		map.put("/memberList.do", new MemberListControl());
 		//상품관련.
 		map.put("/allProduct.do", new AllControl());

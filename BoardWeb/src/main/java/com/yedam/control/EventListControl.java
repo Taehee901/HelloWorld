@@ -26,7 +26,7 @@ public class EventListControl implements Control {
 		//String start = req.getParameter("eStart");
 		BoardService svc = new BoardServiceImpl();
 		//List<EventVO> list = svc.eventList(title);
-		List <Map<String,String>> map = svc.eventList();
+		List <EventVO> map = svc.eventList();
 		//map.put("data", list);
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 		String json = gson.toJson(map);

@@ -65,10 +65,11 @@
 		let upw = this.value.length;
 		if(upw >= 5){
 			alert('비밀번호 자릿수가 맞습니다.');
+			check = true;	
 		}
 		else{
 			alert('비밀번호를 5글자 이상입력해주세요');
-			check = true;	
+			check = false;
 		}
 	})
 

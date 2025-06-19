@@ -31,7 +31,7 @@ fetch(url)
 				//tr 생성하기.
 				//let tr = makeRow(center);
 				let tr = makeRow(center);
-				//console.log(center);
+				console.log(center);
 				document.querySelector('#centerList').appendChild(tr);
 			}//end of if
 		});//end of forEach
@@ -79,7 +79,7 @@ document.querySelector('#sido').addEventListener('change',function(e){
 		let tr = makeRow(center);
 		document.querySelector('#centerList').appendChild(tr);
 	 })
-	console.log(keyword);
+	//console.log(keyword);
 });
 //filter,function,foreach 매개값3ro
 // [].push(),[].unshift(),[].pop(맨뒤),[].shift() => [].splice(),매가값으로 추가,수정,삭제 가능
@@ -87,7 +87,7 @@ document.querySelector('#sido').addEventListener('change',function(e){
 
 //배열에서만 쓸수있는 메소드
 let result = [1,3,5,7].reduce(function(acc,elem,idx,ary){
-	console.log(acc,elem);//acc이전순번값,elem이번순번값
+	//sconsole.log(acc,elem);//acc이전순번값,elem이번순번값
 	if(elem>4){
 		let li = document.createElement('li');
 		li.innerHTML = elem;

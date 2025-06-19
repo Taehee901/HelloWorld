@@ -27,7 +27,7 @@ public interface BoardMapper {
 	public List<Map> selectUserByCount();//key,value
 	
 	//event
-	public List<Map<String, String>> selectEvent();
+	public List<EventVO> selectEvent();
 	public int insertEvent(EventVO title);
 	public int deleteEvent(EventVO title);
 	public int deleteEvent(Map<String, String> map);
